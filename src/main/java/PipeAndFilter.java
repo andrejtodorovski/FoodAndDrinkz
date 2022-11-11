@@ -5,7 +5,7 @@ public class PipeAndFilter {
     public static void main(String[] args) throws IOException {
         Pipe<String>pipe=new Pipe<>();
         pipe.addFilter(new RemoveCommasFromAdressFilter());
-        int[] listColumns={1,8,18,17,20,23};
+        int[] listColumns={0,1,8,18,17,20,23};
         pipe.addFilter(new RemoveColumnsOfChoiceFilter(listColumns));
         pipe.addFilter(new RenameCafeCategoryFilter());
         pipe.addFilter(new RefactorAttributesFilter());
