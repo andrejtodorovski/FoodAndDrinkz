@@ -8,17 +8,18 @@ public class TransferAttributesFilter implements Filter<String>{
         pom[4].toLowerCase().contains("cafe")) {
             String[] attr = pom[4].split(" ");
             StringBuilder tmp = new StringBuilder();
-            for (int i = 0; i < attr.length; i++) {
-                if (!attr[i].equalsIgnoreCase("restaurant") &&
-                !attr[i].equalsIgnoreCase("bar")) {
-                    tmp.append(attr[i] + " ");
+            for (String s : attr) {
+                if (!s.equalsIgnoreCase("restaurant") &&
+                        !s.equalsIgnoreCase("bar") && !s.equalsIgnoreCase("cafe")) {
+                    tmp.append(s).append(" ");
                 }
-                if(attr[i].equalsIgnoreCase("restaurant")){
+                if (s.equalsIgnoreCase("restaurant")) {
                     pom[4] = "Restaurant";
                 }
-                if(attr[i].equalsIgnoreCase("bar")){
+                if (s.equalsIgnoreCase("bar")) {
                     pom[4] = "Bar";
                 }
+
             }
             StringBuilder sb = new StringBuilder();
             pom[5] = String.valueOf(sb.append(pom[5]).append(";").append(tmp.toString().trim()));
