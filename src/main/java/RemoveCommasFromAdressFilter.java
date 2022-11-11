@@ -12,7 +12,7 @@ public class RemoveCommasFromAdressFilter implements Filter<String>{
                     p.append(pom[j]);
                 }
                 i=pom.length-k;
-                rez.append(p);
+                rez.append(p.substring(1));
             }else{
                 rez.append(pom[i]);
             }
