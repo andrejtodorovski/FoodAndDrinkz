@@ -11,6 +11,7 @@ public class PipeAndFilter {
         pipe.addFilter(new RefactorAttributesFilter());
         pipe.addFilter(new TransferAttributesFilter());
         pipe.addFilter(new RemoveNullFilter());
+        pipe.addFilter(new RemoveColumnsOfChoiceFilter(new int[]{0}));
         BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\andre\\Downloads\\DIANS_Domasna1\\DIANS_Domasna1\\src\\main\\resources\\raw_data.csv")));
         File f=new File("C:\\Users\\andre\\Downloads\\DIANS_Domasna1\\DIANS_Domasna1\\src\\main\\resources\\filtered_data.csv");
         PrintWriter printWriter=new PrintWriter(f);
