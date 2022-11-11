@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class RemoveColumnsOfChoiceFilter implements Filter<String>{
+public class RemoveColumnsOfChoiceFilter implements Filter<String> {
     List<Integer> columns;
 
     public RemoveColumnsOfChoiceFilter(int[] column) {

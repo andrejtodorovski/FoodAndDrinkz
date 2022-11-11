@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class RefactorAttributesFilter implements Filter<String>{
+public class RefactorAttributesFilter implements Filter<String> {
 
     @Override
     public String execute(String input) {
