@@ -18,7 +18,7 @@ public class PipeAndFilter {
         while((pom!=null)){
             String p=pipe.runFilter(pom);
             if(!Objects.equals(p, "delete")){
-                printWriter.println(p);
+                printWriter.println(p.substring(0,p.length()-1));
             }
             pom=bufferedReader.readLine();
         }
