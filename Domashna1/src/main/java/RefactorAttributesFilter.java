@@ -1,5 +1,4 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Objects;
 
 public class RefactorAttributesFilter implements Filter<String>{
 
@@ -9,7 +8,7 @@ public class RefactorAttributesFilter implements Filter<String>{
         String[]attr=pom[5].split("·");
         StringBuilder attrpom=new StringBuilder();
         for (int i = 0; i < attr.length; i++) {
-           if(attr[i]!=""){
+           if(!Objects.equals(attr[i], "")){
                attrpom.append(attr[i].strip());
                if(i!=attr.length-1){
                    attrpom.append(';');

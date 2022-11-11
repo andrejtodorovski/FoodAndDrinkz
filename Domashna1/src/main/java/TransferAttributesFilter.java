@@ -1,5 +1,3 @@
-import java.util.Locale;
-
 public class TransferAttributesFilter implements Filter<String>{
     @Override
     public String execute(String input) {
