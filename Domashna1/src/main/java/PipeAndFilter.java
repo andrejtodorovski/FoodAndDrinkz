@@ -16,6 +16,7 @@ public class PipeAndFilter {
         pipe.addFilter(new RemoveNullFilter());
         pipe.addFilter(new RemoveColumnsOfChoiceFilter(new int[]{0}));
         pipe.addFilter(new FixTimesFilter());
+        pipe.addFilter(new TrimRowFilter());
         BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\andre\\Downloads\\DIANS_Domasna1\\DIANS_Domasna1\\Domashna1\\src\\main\\resources\\raw_data.csv")));
         File f=new File("C:\\Users\\andre\\Downloads\\DIANS_Domasna1\\DIANS_Domasna1\\Domashna1\\src\\main\\resources\\filtered_data.csv");
         PrintWriter printWriter=new PrintWriter(f);
@@ -27,7 +28,7 @@ public class PipeAndFilter {
                 String[] tmp = p.split(",",-1);
                 if(!stringHashSet.contains(tmp[0])) {
                     stringHashSet.add(tmp[0]);
-                    printWriter.println(p.substring(0, p.length() - 1));
+                    printWriter.println(p);
                 }
             }
             pom=bufferedReader.readLine();
