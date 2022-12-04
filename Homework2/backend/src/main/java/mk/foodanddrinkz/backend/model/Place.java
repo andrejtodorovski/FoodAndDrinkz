@@ -70,6 +70,9 @@ public class Place {
     public String getName() {
         return name;
     }
+    public String getTest(){
+        return "test";
+    }
 
     public void setName(String name) {
         this.name = name;
