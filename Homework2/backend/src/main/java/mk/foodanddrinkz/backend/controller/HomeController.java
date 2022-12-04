@@ -17,11 +17,12 @@ public class HomeController {
         this.placeService = placeService;
     }
 
-    @PostMapping("/show")
-    public String coordinates(@RequestBody String l){
-        System.out.println(l);
-        return "";
-    }
+    // testing
+//    @PostMapping("/show")
+//    public String coordinates(@RequestBody String l){
+//        System.out.println(l);
+//        return "";
+//    }
     @GetMapping
     public List<Place> getTopRatedAndMostVisited(){
         List<Place> tmp1 = placeService.getTopRated();

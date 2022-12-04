@@ -1,6 +1,6 @@
 package mk.foodanddrinkz.backend.controller;
 
-import mk.foodanddrinkz.backend.bootstrap.PlaceDoesntExistException;
+import mk.foodanddrinkz.backend.exceptions.PlaceDoesntExistException;
 import mk.foodanddrinkz.backend.model.Place;
 import mk.foodanddrinkz.backend.service.PlaceService;
 import org.springframework.web.bind.annotation.GetMapping;

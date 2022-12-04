@@ -1,12 +1,11 @@
 package mk.foodanddrinkz.backend.service;
 
-import mk.foodanddrinkz.backend.bootstrap.PlaceDoesntExistException;
+import mk.foodanddrinkz.backend.exceptions.PlaceDoesntExistException;
 import mk.foodanddrinkz.backend.model.Place;
 import mk.foodanddrinkz.backend.repository.PlaceRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PlaceServiceImplementation implements PlaceService {
