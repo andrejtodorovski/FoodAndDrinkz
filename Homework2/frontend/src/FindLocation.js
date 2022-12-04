@@ -1,4 +1,4 @@
-/*global google*/
+// /*global google*/
 import {
   Box,
   Button,
@@ -8,14 +8,14 @@ import {
   Text,
   Input,
 } from '@chakra-ui/react'
-import { FaLocationArrow, FaTimes } from 'react-icons/fa'
+// import { FaLocationArrow, FaTimes } from 'react-icons/fa'
 
 import {
   useJsApiLoader,
   GoogleMap,
   Marker,
-  Autocomplete,
-  DirectionsRenderer,
+  // Autocomplete,
+  // DirectionsRenderer,
 } from '@react-google-maps/api'
 import { useRef, useState } from 'react'
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>

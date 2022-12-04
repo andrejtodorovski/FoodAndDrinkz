@@ -3,13 +3,10 @@ package mk.foodanddrinkz.backend.controller;
 import mk.foodanddrinkz.backend.exceptions.PlaceDoesntExistException;
 import mk.foodanddrinkz.backend.model.Place;
 import mk.foodanddrinkz.backend.service.PlaceService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping ("/bar")
 public class BarController {
