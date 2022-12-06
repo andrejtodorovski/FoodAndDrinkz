@@ -15,10 +15,12 @@ public class BarController {
     public BarController(PlaceService placeService) {
         this.placeService = placeService;
     }
+    // Returning all bars
     @GetMapping("")
     public List<Place> getBars(){
         return placeService.getBars();
     }
+    // Returning a bar based on his id, if the bar exists
     @GetMapping("/{id}")
     public Place getPlaceById(@PathVariable Long id){
         try {

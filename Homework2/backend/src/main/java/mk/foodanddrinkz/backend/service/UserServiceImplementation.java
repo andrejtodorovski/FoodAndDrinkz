@@ -22,4 +22,9 @@ public class UserServiceImplementation implements UserService {
     public User findById(Long id) throws UserDoesntExistException {
         return userRepository.findById(id).orElseThrow(UserDoesntExistException::new);
     }
+
+    @Override
+    public User findByUsername(String username) throws UserDoesntExistException {
+        return userRepository.findByUsername(username).orElseThrow(UserDoesntExistException::new);
+    }
 }

@@ -8,9 +8,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 @ServletComponentScan
 public class BackEndApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(BackEndApplication.class, args);
     }
-
 }
