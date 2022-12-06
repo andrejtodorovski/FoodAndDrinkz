@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/backend/Back-End.iml" filepath="$PROJECT_DIR$/backend/Back-End.iml" />
       <module fileurl="file://$PROJECT_DIR$/Backend/Domashna2.iml" filepath="$PROJECT_DIR$/Backend/Domashna2.iml" />
     </modules>
   </component>

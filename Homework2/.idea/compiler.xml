@@ -8,14 +8,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Domashna2" />
+        <module name="Back-End" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Back-End" target="17" />
       <module name="Domashna2" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Back-End" options="-parameters" />
       <module name="Domashna2" options="-parameters" />
     </option>
   </component>
