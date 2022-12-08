@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const CAFES_API_BASE_URL = "http://localhost:8080/cafe"
+const CAFES_API_BASE_URL = "http://localhost:8080/place/cafes"
 
 
 class CafesService {

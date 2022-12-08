@@ -28,6 +28,7 @@ class StartPageComponent extends Component {
                         <button type="button" class="btn btn-danger" style={buttonStyle}><span style={logStyle}><Link to="/bars">Bars</Link></span></button>
                         <button type="button" class="btn btn-light" style={buttonStyle}><span style={logStyle}><Link to="/cafes">Cafes</Link></span></button>
                         <button type="button" class="btn btn-dark" style={buttonStyle}><span style={logStyle}><Link to="/restaurants">Restaurant</Link></span></button>
+                        <button type="button" class="btn btn-warning"><span><Link to="/place/add">Add Place</Link></span></button>
                     </div>
                 </div>
             </div>

@@ -21,7 +21,7 @@ public class UserController {
 
     // Returning the information about a user, if the user exists
     @GetMapping("/profile")
-    public User getUserInfo(HttpServletRequest request ){
+    public User getUserInfo(HttpServletRequest request) {
         try {
             // we add the userId in session when he is logged in
             return userService.findById((Long) request.getSession().getAttribute("userId"));
@@ -29,9 +29,10 @@ public class UserController {
             throw new RuntimeException(e);
         }
     }
+
     // Returning the favorite places for a user, if the user exists
     @GetMapping("/favorites")
-    public List<Place> getFavorites(HttpServletRequest request){
+    public List<Place> getFavorites(HttpServletRequest request) {
         try {
             // we add the userId in session when he is logged in
             return userService.findById((Long) request.getSession().getAttribute("userId")).getFavoritePlaces();

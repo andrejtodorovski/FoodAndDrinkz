@@ -12,17 +12,23 @@ import ListRestaurantsComponent from './components/ListRestaurantsComponent'
 import ListCafesComponent from './components/ListCafesComponent'
 import LoginComponent from './components/LoginComponent'
 import RegisterComponent from './components/RegisterComponent'
+import AddPlaceComponent from './components/AddPlaceComponent';
+import ShowClosestComponent from './components/ShowClosestComponent';
+import FindUserLocationComponent from './components/FindUserLocationComponent';
 function App() {
   return (
     <Router>
       <div className="container">
         <Routes>
-          <Route path='/' element = {<><TopNavBarComponent/><StartPageComponent/><MostVisitedAndTopRatedComponent/></>}></Route>
-          <Route path='/bars' element = {<><LoggedTopNavBarComponent/><BarsNavBarComponent/><ListBarsComponent/></>}></Route>
-          <Route path='/restaurants' element = {<><LoggedTopNavBarComponent/><RestaurantsNavBarComponent/><ListRestaurantsComponent/></>}></Route>
-          <Route path='/cafes' element = {<><LoggedTopNavBarComponent/><CafesNavBarComponent/><ListCafesComponent/></>}></Route>
-          <Route path='/login' element = {<><TopNavBarComponent/><LoginComponent/></>}></Route>
-          <Route path='/register' element = {<><TopNavBarComponent/><RegisterComponent/></>}></Route>
+          <Route exact path='/' element = {<><TopNavBarComponent/><StartPageComponent/><MostVisitedAndTopRatedComponent/><FindUserLocationComponent/></>}></Route>
+          <Route exact path='/bars' element = {<><LoggedTopNavBarComponent/><BarsNavBarComponent/><ListBarsComponent/></>}></Route>
+          <Route exact path='/restaurants' element = {<><LoggedTopNavBarComponent/><RestaurantsNavBarComponent/><ListRestaurantsComponent/></>}></Route>
+          <Route exact path='/cafes' element = {<><LoggedTopNavBarComponent/><CafesNavBarComponent/><ListCafesComponent/></>}></Route>
+          <Route exact path='/login' element = {<><TopNavBarComponent/><LoginComponent/></>}></Route>
+          <Route exact path='/register' element = {<><TopNavBarComponent/><RegisterComponent/></>}></Route>
+          <Route exact path='/place/add' element = {<><TopNavBarComponent/><AddPlaceComponent/></>}></Route>
+          <Route exact path='/test' element = {<><TopNavBarComponent/><FindUserLocationComponent/></>}></Route>
+          <Route exact path='/closest' element = {<><TopNavBarComponent/><ShowClosestComponent/></>}></Route>
         </Routes>
       </div>
     </Router>
