@@ -163,6 +163,14 @@ public class Place {
         this.friday = friday;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
     public void setSaturday(String saturday) {
         this.saturday = saturday;
     }

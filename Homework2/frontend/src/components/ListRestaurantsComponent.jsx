@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import RestaurantsService from '../services/RestaurantsService';
-
+import { Link } from 'react-router-dom'
 class ListRestaurantsComponent extends Component {
     constructor(props) {
         super(props);
@@ -25,6 +25,7 @@ class ListRestaurantsComponent extends Component {
                                 <th>Rating</th>
                                 <th>Reviews</th>
                                 <th>Address</th>
+                                <th>View</th>
                             </tr>
                         </thead>
                         <tbody>{
@@ -34,6 +35,9 @@ class ListRestaurantsComponent extends Component {
                                     <td>{restaurant.rating}</td>
                                     <td>{restaurant.reviewCount}</td>
                                     <td>{restaurant.address}</td>
+                                    <td>                    
+                                        <button type="button" class="btn btn-warning"><span><Link to={`/${restaurant.id}`}>View</Link></span></button>
+                                    </td>
                                 </tr>
                                 )
                         }

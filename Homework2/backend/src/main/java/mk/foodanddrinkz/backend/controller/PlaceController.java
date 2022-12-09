@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import mk.foodanddrinkz.backend.exceptions.PlaceDoesntExistException;
 import mk.foodanddrinkz.backend.model.Place;
 import mk.foodanddrinkz.backend.service.PlaceService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -36,12 +37,14 @@ public class PlaceController {
 
     // Returning a bar based on his id, if the bar exists
     @GetMapping("/{id}")
-    public Place getPlaceById(@PathVariable Long id) {
+    public ResponseEntity<Place> getPlaceById(@PathVariable Long id) {
+        Place place;
         try {
-            return placeService.getById(id);
+            place = placeService.getById(id);
         } catch (PlaceDoesntExistException e) {
             throw new RuntimeException(e);
         }
+        return ResponseEntity.ok(place);
     }
 
     @PostMapping("/add")

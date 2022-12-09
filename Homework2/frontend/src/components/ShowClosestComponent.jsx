@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ClosestService from '../services/ClosestService';
-
+import { Link } from 'react-router-dom'
 class ShowClosestComponent extends Component {
     constructor(props) {
         super(props);
@@ -17,7 +17,7 @@ class ShowClosestComponent extends Component {
         return (
             <div>
                 
-                <h2 className='text-center'>All Bars</h2>
+                <h2 className='text-center'>Closest places</h2>
                 <div className='row'>
                     <table className='table table-striped table-bordered'>
                         <thead>
@@ -26,6 +26,7 @@ class ShowClosestComponent extends Component {
                                 <th>Rating</th>
                                 <th>Reviews</th>
                                 <th>Address</th>
+                                <th>View</th>
                             </tr>
                         </thead>
                         <tbody>{
@@ -35,6 +36,9 @@ class ShowClosestComponent extends Component {
                                     <td>{c.rating}</td>
                                     <td>{c.reviewCount}</td>
                                     <td>{c.address}</td>
+                                    <td>                    
+                                        <button type="button" class="btn btn-warning"><span><Link to={`/${c.id}`}>View</Link></span></button>
+                                    </td>
                                 </tr>   
                                 )
                         }
