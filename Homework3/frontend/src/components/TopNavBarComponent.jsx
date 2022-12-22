@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
+import '../styles/TopNavBarComponent.css'
 class TopNavBarComponent extends Component {
     render() {
         const buttonStyle = {
@@ -12,13 +13,13 @@ class TopNavBarComponent extends Component {
             padding: "5px"
         }
         return (
-            <div className='d-flex p-2 justify-content-around bg-secondary bg-gradient'>
-                <div>
-                    <button type="button" className="btn btn-danger" style={buttonStyle}><span style={logoStyle}><Link to="/">FoodAndDrinkz</Link></span></button>
+            <div className='topNavBarContainer pl-5'>
+                <div className='btn1'>
+                    <button type="button" className="btn maroonBut ml-5 mt-2" style={buttonStyle}><span style={logoStyle}><Link to="/" className='text-white'>PinPoint</Link></span></button>
                 </div>
-                <div>
-                    <button type="button" className="btn btn-light" style={buttonStyle}><span style={logStyle}><Link to="/login">Login</Link></span></button>
-                    <button type="button" className="btn btn-dark" style={buttonStyle}><span style={logStyle}><Link to="/register">Sign Up</Link></span></button>
+                <div className='btn2'>
+                    <button type="button" className="btn whiteBut m-2" style={buttonStyle}><span style={logStyle}><Link to="/login" className='text-dark'>Login</Link></span></button>
+                    <button type="button" className="btn grayBut m-2" style={buttonStyle}><span style={logStyle}><Link to="/register" className='text-white'>Sign Up</Link></span></button>
                 </div>
                 
             </div>

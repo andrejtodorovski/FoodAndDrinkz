@@ -15,35 +15,18 @@ class ListRestaurantsComponent extends Component {
     }
     render() {
         return (
-            <div>
-                <h2 className='text-center'>All Restaurants</h2>
-                <div className='row'>
-                    <table className='table table-striped table-bordered'>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Rating</th>
-                                <th>Reviews</th>
-                                <th>Address</th>
-                                <th>View</th>
-                            </tr>
-                        </thead>
-                        <tbody>{
-                            this.state.restaurants.map(restaurant => 
-                                <tr key = {restaurant.id}>
-                                    <td>{restaurant.name}</td>
-                                    <td>{restaurant.rating}</td>
-                                    <td>{restaurant.reviewCount}</td>
-                                    <td>{restaurant.address}</td>
-                                    <td>                    
-                                        <button type="button" class="btn btn-warning"><span><Link to={`/${restaurant.id}`}>View</Link></span></button>
-                                    </td>
-                                </tr>
-                                )
-                        }
-                        </tbody>
-                    </table>
+            <div className='listContainer grayBackground pt-2'>
+                {this.state.restaurants.map(restaurant =>
+                <div className='listItem '>
+                    <img className='listImg' src={restaurant.imgUrl}></img>
+                    <div className='d-flex justify-content-center'>
+                            <div><img className='icon2 mr-2' src='https://cdn-icons-png.flaticon.com/512/1828/1828961.png'></img></div>
+                            <div><h6 className='textDarkGray mt-1'>{restaurant.rating}</h6></div>
+                    </div>
+                    <h5 className='text-center mt-2'>{restaurant.name}</h5>
+                    <Link to={`/${restaurant.id}`}><img className='icon' src='https://cdn-icons-png.flaticon.com/512/2985/2985150.png'></img></Link>
                 </div>
+                )}
             </div>
         );
     }

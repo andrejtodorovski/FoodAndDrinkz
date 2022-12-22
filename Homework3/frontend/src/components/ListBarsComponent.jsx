@@ -15,35 +15,18 @@ class ListBarsComponent extends Component {
     }
     render() {
         return (
-            <div>
-                <h2 className='text-center'>All Bars</h2>
-                <div className='row'>
-                    <table className='table table-striped table-bordered'>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Rating</th>
-                                <th>Reviews</th>
-                                <th>Address</th>
-                                <th>View</th>
-                            </tr>
-                        </thead>
-                        <tbody>{
-                            this.state.bars.map(bar => 
-                                <tr key = {bar.id}>
-                                    <td>{bar.name}</td>
-                                    <td>{bar.rating}</td>
-                                    <td>{bar.reviewCount}</td>
-                                    <td>{bar.address}</td>
-                                    <td>                    
-                                        <button type="button" class="btn btn-warning"><span><Link to={`/${bar.id}`}>View</Link></span></button>
-                                    </td>
-                                </tr>   
-                                )
-                        }
-                        </tbody>
-                    </table>
+            <div className='listContainer grayBackground pt-2'>
+                {this.state.bars.map(bar =>
+                <div className='listItem '>
+                    <img className='listImg' src={bar.imgUrl}></img>
+                    <div className='d-flex justify-content-center'>
+                            <div><img className='icon2 mr-2' src='https://cdn-icons-png.flaticon.com/512/1828/1828961.png'></img></div>
+                            <div><h6 className='textDarkGray mt-1'>{bar.rating}</h6></div>
+                    </div>
+                    <h5 className='text-center mt-2'>{bar.name}</h5>
+                    <Link to={`/${bar.id}`}><img className='icon' src='https://cdn-icons-png.flaticon.com/512/2985/2985150.png'></img></Link>
                 </div>
+                )}
             </div>
         );
     }

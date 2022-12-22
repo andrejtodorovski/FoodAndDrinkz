@@ -1,14 +1,4 @@
 // /*global google*/
-import {
-    Box,
-    Button,
-    ButtonGroup,
-    Flex,
-    HStack,
-    Text,
-    Input,
-  } from '@chakra-ui/react'
-  // import { FaLocationArrow, FaTimes } from 'react-icons/fa'
   import { Link } from 'react-router-dom'
   import {
     useJsApiLoader,
@@ -24,6 +14,7 @@ import {
     const [longitude, setLongitude] = useState('')
     const [latitude, setLatitude] = useState('')
     const [radius, setRadius] = useState('')
+    const [category, setCategory] = useState('')
   
     async function findCoordinates() {
         if (navigator.geolocation) {
@@ -31,6 +22,7 @@ import {
           (position) => {
             setLatitude(position.coords.latitude)
             setLongitude(position.coords.longitude)
+            console.log(longitude,latitude)
           },
           () => {
             
@@ -40,69 +32,73 @@ import {
     }
     const changeRadius=(e)=>{
         e.preventDefault()
-        setRadius(e.target.value)
+        if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            setLatitude(position.coords.latitude)
+            setLongitude(position.coords.longitude)
+            console.log(longitude,latitude)
+          },
+          () => {
+            
+          }
+        );
+      }
+      setRadius(e.target.value)
     }
+    const changeCategory=(e)=>{
+      e.preventDefault()
+      setCategory(e.target.value)
+  }
     const findClosest=(e)=>{
         e.preventDefault()
-        const loc = {longitude,latitude,radius}
+        const loc = {longitude,latitude,radius,category}
         console.log(loc)
-        // PlaceService.findClosest(loc);
         fetch("http://localhost:8080/place/closest",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(loc)
-        })
+        }).then(
+          window.location.pathname = "/closest"
+        )
     }
 
     return (
-        <div className='container'>
-      <Flex
-        position='relative'
-        flexDirection='column'
-        alignItems='center'
-        h='70vh'
-        w='67vw'
-        margin='0'
-      >
-        <Box
-          p={4}
-          borderRadius='lg'
-          m={4}
-          bgColor='white'
-          shadow='base'
-          minW='container.md'
-          zIndex='1'
-        >
-          <HStack spacing={2} justifyContent='space-between'>
-            <ButtonGroup>
-              <Button colorScheme='pink' type='submit' onClick={findCoordinates}>
-                Find My Location
-              </Button>  
-            </ButtonGroup>
-          </HStack>
-          <HStack spacing={2} mt={4} justifyContent='space-between'>
-              <Text>Longitude: {longitude} </Text>
-          </HStack>
-          <HStack spacing={2} mt={4} justifyContent='space-between'>
-              <Text>Latitude: {latitude} </Text>
-          </HStack>
-          <HStack spacing={2} justifyContent='space-between'>
-              <Box flexGrow={1}>
-                <Input type='number' placeholder='Radius' onChange={changeRadius}/>
-              </Box>
-              <Box flexGrow={1}>
-                <ButtonGroup>
-                  <Button colorScheme='pink' type='submit' onClick={findClosest}>
-                    Find places
-                  </Button>
-                </ButtonGroup>
-              </Box>
-            </HStack>
-        </Box>
-        <button type="button" class="btn btn-danger"><span><Link to="/closest">Show places in radius</Link></span></button>  
-    </Flex>
-      
-
+      <div className='container'>
+      <div className="Auth-form-container">
+        <form className="Auth-form">
+          <div className="Auth-form-content">
+            <h3 className="Auth-form-title">Find places in radius</h3>
+            <div className="form-group mt-3">
+              <label>Radius</label>
+              <input
+                type="number"
+                className="form-control mt-1"
+                placeholder="Enter radius"
+                min={1}
+                max={100}
+                step={1}
+                required
+                onChange={changeRadius}
+              />  
+            </div>
+            <div className="form-group mt-3">
+              <label>Category</label>
+              <select className='form-control mt-1' required 
+                onChange={changeCategory}>
+              <option value="Bar">Bar</option>
+              <option value="Cafe">Cafe</option>
+              <option value="Restaurant">Restaurant</option>
+              </select>
+            </div>
+            <div className="d-grid gap-2 mt-3">
+              <button type='submit' className='btn btn-primary' onClick={findClosest}>
+                Find Closest
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
       </div>
     )
   }
