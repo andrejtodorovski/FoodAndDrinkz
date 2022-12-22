@@ -76,7 +76,7 @@ class PlaceComponent extends Component {
                         </div>
                     </div>
                     <div className='fitAll'>
-                        <img className='fitAll' src={this.state.place.imgUrl} alt={this.state.place.name}></img>
+                        <img className='fitAll imgHeight100' src={this.state.place.imgUrl} alt={this.state.place.name}></img>
                     </div>
                 </div>
             </div>
