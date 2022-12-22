@@ -77,8 +77,8 @@ public class PlaceServiceImplementation implements PlaceService {
         // calculate the result
         return (float) (c * r);
     }
-    @Override
-    public List<Place> findClosest(Float longitude, Float latitude, Integer radius) {
-        return placeRepository.findAll().stream().filter(place -> distance(latitude, place.getLatitude(), longitude, place.getLongitude())<radius).collect(Collectors.toList());
+        @Override
+    public List<Place> findClosest(Float longitude, Float latitude, Integer radius, String category) {
+        return placeRepository.findAllByCategoryIgnoreCase(category).stream().filter(place -> distance(latitude, place.getLatitude(), longitude, place.getLongitude())<radius).collect(Collectors.toList());
     }
 }

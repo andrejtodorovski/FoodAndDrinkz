@@ -1,14 +1,15 @@
 package mk.foodanddrinkz.backend.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import mk.foodanddrinkz.backend.dto.SearchDTO;
 import mk.foodanddrinkz.backend.exceptions.PlaceDoesntExistException;
 import mk.foodanddrinkz.backend.model.Place;
 import mk.foodanddrinkz.backend.service.PlaceService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -54,26 +55,30 @@ public class PlaceController {
         //return placeService.save(place);
         return null;
     }
+
     @PostMapping("/closest")
-    public void closestPlaces(@RequestBody String location, HttpServletRequest request){
-        location = location.substring(1,location.length()-1);
-        Float longitude = Float.valueOf(location.split(",")[0].split(":")[1]);
-        Float latitude = Float.valueOf(location.split(",")[1].split(":")[1]);
-        String tmp = (location.split(",")[2].split(":")[1]);
-        Integer radius = Integer.valueOf(tmp.substring(1,tmp.length()-1));
-        System.out.println(location);
-        System.out.println(longitude + "," + latitude + " and r:" + radius);
-        System.out.println(placeService.findClosest(longitude,latitude,radius));
-        request.getServletContext().setAttribute("longitude",longitude);
+    public void closestPlaces(@RequestBody SearchDTO searchDTO, HttpServletRequest request) {
+        String longitude = searchDTO.getLongitude();
+        String latitude = searchDTO.getLatitude();
+        Integer radius = searchDTO.getRadius();
+        String category = searchDTO.getCategory();
+        if(Objects.equals(category, "")){
+            category="Bar";
+        }
+        System.out.println(longitude + "," + latitude + " and radius : " + radius + " in category : " + category);
+        request.getServletContext().setAttribute("longitude", longitude);
         request.getServletContext().setAttribute("latitude", latitude);
-        request.getServletContext().setAttribute("radius",radius);
+        request.getServletContext().setAttribute("radius", radius);
+        request.getServletContext().setAttribute("category", category);
     }
+
     @GetMapping("/closest")
-    public List<Place> getClosestPlaces(HttpServletRequest request){
-        Float longitude = (Float) request.getServletContext().getAttribute("longitude");
-        Float latitude = (Float) request.getServletContext().getAttribute("latitude");
+    public List<Place> getClosestPlaces(HttpServletRequest request) {
+        Float longitude = Float.valueOf((String) request.getServletContext().getAttribute("longitude"));
+        Float latitude = Float.valueOf((String) request.getServletContext().getAttribute("latitude"));
         Integer radius = (Integer) request.getServletContext().getAttribute("radius");
-        System.out.println(longitude+latitude+radius);
-        return placeService.findClosest(longitude,latitude,radius);
+        String category = (String) request.getServletContext().getAttribute("category");
+        System.out.println(longitude + latitude + radius);
+        return placeService.findClosest(longitude, latitude, radius, category);
     }
 }

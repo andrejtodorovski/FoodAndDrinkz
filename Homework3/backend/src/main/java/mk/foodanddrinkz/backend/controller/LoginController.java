@@ -1,11 +1,11 @@
 package mk.foodanddrinkz.backend.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import mk.foodanddrinkz.backend.dto.LoginDTO;
 import mk.foodanddrinkz.backend.exceptions.UserDoesntExistException;
 import mk.foodanddrinkz.backend.model.User;
 import mk.foodanddrinkz.backend.service.UserService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 //Copied from webLab
@@ -18,24 +18,27 @@ public class LoginController {
     public LoginController(UserService userService) {
         this.userService = userService;
     }
+    @CrossOrigin(origins = "http://localhost:3000/login")
     @PostMapping
-    public void loginUser(@RequestBody String credentials,
+    public Object loginUser(@RequestBody LoginDTO loginDTO,
                             HttpServletRequest request){
-        credentials = credentials.substring(1,credentials.length()-1);
-        String username = credentials.split(",")[0].split(":")[1];
-        String password = credentials.split(",")[1].split(":")[1];
-        username = username.substring(1,username.length()-1);
-        password = password.substring(1,password.length()-1);
+        String username = loginDTO.getUsername();
+        String password = loginDTO.getPassword();
         System.out.println(username);
         System.out.println(password);
+        request.getSession().setAttribute("username",username);
         User u;
         try{
             u=userService.login(username,password);
             request.getSession().setAttribute("username",username);
             request.getSession().setAttribute("user",u);
+            request.getSession().setAttribute("hasLoggedIn", true);
+            return ResponseEntity.ok("true");
         }
         catch(UserDoesntExistException exception) {
-            throw new RuntimeException(exception);
+            request.getSession().setAttribute("hasLoggedIn", false);
+            return ResponseEntity.notFound();
+            // throw new RuntimeException(exception);
         }
     }
 }

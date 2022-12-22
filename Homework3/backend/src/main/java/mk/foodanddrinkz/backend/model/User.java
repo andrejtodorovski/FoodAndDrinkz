@@ -1,11 +1,18 @@
 package mk.foodanddrinkz.backend.model;
 
 import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Table(name = "users_table")
 public class User {
     @Id
@@ -13,11 +20,10 @@ public class User {
     Long id;
     String username;
     String password;
+    // enumeration for role
     @ManyToMany
+    @ToString.Exclude
     List<Place> favoritePlaces;
-
-    public User() {
-    }
 
     public User(String username, String password) {
         this.username = username;
@@ -25,35 +31,16 @@ public class User {
         favoritePlaces = new ArrayList<>();
     }
 
-    public Long getId() {
-        return id;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        User user = (User) o;
+        return id != null && Objects.equals(id, user.id);
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public List<Place> getFavoritePlaces() {
-        return favoritePlaces;
-    }
-
-    public void setFavoritePlaces(List<Place> favoritePlaces) {
-        this.favoritePlaces = favoritePlaces;
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

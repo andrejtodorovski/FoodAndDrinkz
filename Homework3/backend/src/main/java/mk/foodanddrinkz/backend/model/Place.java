@@ -4,8 +4,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.*;
+import org.hibernate.Hibernate;
+
+import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 public class Place {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,9 +56,6 @@ public class Place {
         this.longitude = Float.valueOf(longitude);
     }
 
-    public Place() {
-
-    }
 
     public String[] getWorkingHours(){
         String [] opened = new String[7];
@@ -67,139 +72,16 @@ public class Place {
         return attributes.split(";");
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Float getRating() {
-        return rating;
-    }
-
-    public void setRating(Float rating) {
-        this.rating = rating;
-    }
-
-    public Integer getReviewCount() {
-        return reviewCount;
-    }
-
-    public void setReviewCount(Integer reviewCount) {
-        this.reviewCount = reviewCount;
-    }
-
-    public void setAttributes(String attributes) {
-        this.attributes = attributes;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
-
-    public Float getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Float latitude) {
-        this.latitude = latitude;
-    }
-
-    public Float getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Float longitude) {
-        this.longitude = longitude;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public void setMonday(String monday) {
-        this.monday = monday;
-    }
-
-    public void setTuesday(String tuesday) {
-        this.tuesday = tuesday;
-    }
-
-    public void setWednesday(String wednesday) {
-        this.wednesday = wednesday;
-    }
-
-    public void setThursday(String thursday) {
-        this.thursday = thursday;
-    }
-
-    public void setFriday(String friday) {
-        this.friday = friday;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setSaturday(String saturday) {
-        this.saturday = saturday;
-    }
-
-    public void setSunday(String sunday) {
-        this.sunday = sunday;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Place place = (Place) o;
+        return id != null && Objects.equals(id, place.id);
     }
 
     @Override
-    public String toString() {
-        return "Place{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", rating=" + rating +
-                ", reviewCount=" + reviewCount +
-                ", category='" + category + '\'' +
-                ", attributes='" + attributes + '\'' +
-                ", address='" + address + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", monday='" + monday + '\'' +
-                ", tuesday='" + tuesday + '\'' +
-                ", wednesday='" + wednesday + '\'' +
-                ", thursday='" + thursday + '\'' +
-                ", friday='" + friday + '\'' +
-                ", saturday='" + saturday + '\'' +
-                ", sunday='" + sunday + '\'' +
-                ", imgUrl='" + imgUrl + '\'' +
-                ", latitude=" + latitude +
-                ", longitude=" + longitude +
-                '}';
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

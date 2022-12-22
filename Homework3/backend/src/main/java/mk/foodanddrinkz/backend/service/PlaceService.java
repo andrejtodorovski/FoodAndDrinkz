@@ -14,5 +14,5 @@ public interface PlaceService {
     public List<Place> getCafes();
     public Place getById(Long id) throws PlaceDoesntExistException;
     public Place save(Place place);
-    List<Place> findClosest(Float longitude, Float latitude, Integer radius);
+    List<Place> findClosest(Float longitude, Float latitude, Integer radius, String category);
 }
