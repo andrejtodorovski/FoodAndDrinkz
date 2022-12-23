@@ -16,6 +16,7 @@ import AddPlaceComponent from './components/AddPlaceComponent';
 import ShowClosestComponent from './components/ShowClosestComponent';
 import FindUserLocationComponent from './components/FindUserLocationComponent';
 import PlaceComponent from './components/PlaceComponent';
+import PlaceComponentWithRoute from './components/PlaceComponentWithRoute';
 function App() {
   return (
     <Router>
@@ -30,7 +31,7 @@ function App() {
           <Route exact path='/place/add' element = {<><TopNavBarComponent/><AddPlaceComponent/></>}></Route>
           <Route exact path='/test' element = {<><TopNavBarComponent/><FindUserLocationComponent/></>}></Route>
           <Route exact path='/closest' element = {<><TopNavBarComponent/><ShowClosestComponent/></>}></Route>
-          <Route exact path='/:id' element = {<><TopNavBarComponent/><PlaceComponent/></>}></Route>
+          <Route exact path='/:id' element = {<><TopNavBarComponent/><PlaceComponentWithRoute/></>}></Route>
           <Route exact path='/findClosest' element = {<><TopNavBarComponent/><FindUserLocationComponent/></>}></Route>
         </Routes>
       </div>
