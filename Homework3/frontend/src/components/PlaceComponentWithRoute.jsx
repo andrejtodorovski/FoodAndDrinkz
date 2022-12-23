@@ -18,14 +18,18 @@ function PlaceComponentWithRoute() {
     libraries
   })
 
+  const [haveData, setData] = useState(false)
   const [place, setPlace] = useState('')
   const [isClick, setClicked] = useState('')
   useEffect(() => {
+    if(haveData===false){
     PlaceService.getPlace(window.location.pathname.substring(1)).then(res => {
         setPlace(res.data);
+    });
+    setData(true);
         //  console.log(place)
-    })
-  });
+    }
+    });
   const isClicked=(e)=>{
     e.preventDefault()
     setClicked(true)

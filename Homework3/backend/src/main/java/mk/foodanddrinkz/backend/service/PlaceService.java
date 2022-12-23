@@ -15,4 +15,6 @@ public interface PlaceService {
     public Place getById(Long id) throws PlaceDoesntExistException;
     public Place save(Place place);
     List<Place> findClosest(Float longitude, Float latitude, Integer radius, String category);
+    public List<String> getAttributesForCategory(String category);
+    List<Place> getByAttributeAndCategory(String attribute, String category);
 }

@@ -12,4 +12,5 @@ public interface PlaceRepository extends JpaRepository<Place, Integer> {
     List<Place> findAllByCategoryIgnoreCase(String category);
     List<Place> findAllByOrderByRatingDesc();
     List<Place> findAllByOrderByReviewCountDesc();
+    List<Place> findAllByCategoryIgnoreCaseAndAttributesContainingIgnoreCase(String category, String attributes);
 }

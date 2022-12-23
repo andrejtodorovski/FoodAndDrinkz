@@ -81,4 +81,15 @@ public class PlaceController {
         System.out.println(longitude + latitude + radius);
         return placeService.findClosest(longitude, latitude, radius, category);
     }
+
+    // make DTO classes for the parameters
+    // first method maybe needs to return List<String>
+    @GetMapping("/testing")
+    public String[] bl(@RequestParam String category){
+        return placeService.getAttributesForCategory(category).toArray(new String[0]);
+    }
+    @GetMapping("/test")
+    public List<Place> b(String attribute,String category){
+        return placeService.getByAttributeAndCategory(attribute,category);
+    }
 }

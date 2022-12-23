@@ -5,6 +5,9 @@ import mk.foodanddrinkz.backend.model.Place;
 import mk.foodanddrinkz.backend.repository.PlaceRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -80,5 +83,20 @@ public class PlaceServiceImplementation implements PlaceService {
         @Override
     public List<Place> findClosest(Float longitude, Float latitude, Integer radius, String category) {
         return placeRepository.findAllByCategoryIgnoreCase(category).stream().filter(place -> distance(latitude, place.getLatitude(), longitude, place.getLongitude())<radius).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<String> getAttributesForCategory(String category) {
+        HashSet<String> stringHashSet = new HashSet<>();
+        for (Place pl: placeRepository.findAllByCategoryIgnoreCase(category)
+             ) {
+            stringHashSet.addAll(Arrays.asList(pl.getAttributes()));
+        }
+        return new ArrayList<>(stringHashSet);
+    }
+
+    @Override
+    public List<Place> getByAttributeAndCategory(String attribute, String category) {
+        return placeRepository.findAllByCategoryIgnoreCaseAndAttributesContainingIgnoreCase(category,attribute);
     }
 }
