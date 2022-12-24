@@ -71,6 +71,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import '../styles/TopNavBarComponent.css'
+
 class LoginComponent extends Component {
     constructor(props) {
         super(props);
@@ -103,9 +104,11 @@ class LoginComponent extends Component {
       }).then(response => this.setState({p:response.ok}))
     }
     render() {
+        //const mystyle={ 
+        //backgroundImage:`url(${background})` };
         return (
             <div className='d-flex flex-column text-center loginFormDiv'>
-              <div>Login</div>
+              <div classname='loginText'>Login</div>
               <div>
                 <form className='d-flex flex-column text-center'>
                     <input

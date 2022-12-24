@@ -1,6 +1,10 @@
 .topNavBarContainer{
     background: linear-gradient(89.72deg, #F3F3F3 2.11%, #E9E9E9 76.33%);
 }
+.topNavBarContainerDark{
+    background-color: #414B4D;
+    height: 200%;
+}
 .topNavBarContainerRadius{
     background: linear-gradient(89.72deg, #F3F3F3 2.11%, #E9E9E9 76.33%);
     border-bottom-left-radius: 228px;
@@ -174,4 +178,5 @@
     width: 50%;
     padding: auto;
     margin: auto;
+
 }
