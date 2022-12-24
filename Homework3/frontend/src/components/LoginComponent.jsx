@@ -101,7 +101,14 @@ class LoginComponent extends Component {
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify(cred) 
-      }).then(response => this.setState({p:response.ok}))
+      }).then((response)=>
+      response.json()
+    ).then((user)=>{
+      console.log(user.status)
+      if(user.status!==406){
+        window.location.href='/'
+      }
+    })
     }
     render() {
         //const mystyle={ 
@@ -126,7 +133,7 @@ class LoginComponent extends Component {
                       onChange={this.handlePassword}
                     />
                     <div className='d-flex text-center justify-content-between'>
-                      <button type='submit' onClick={this.handleSubmit}><Link to='/'>Login</Link></button>
+                      <button type='submit' onClick={this.handleSubmit}>Login</button>
                       <div>
                         <div>don't have an account?</div>
                         <div><Link to='/register'>Register here</Link></div>

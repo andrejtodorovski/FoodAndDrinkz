@@ -50,7 +50,7 @@ public class PlaceController {
         return ResponseEntity.ok(place);
     }
 
-    @PostMapping("/add")
+    @PostMapping("/new/add")
     public Place addPlace(@RequestBody Place place) {
         // ERROR: duplicate key value violates unique constraint
         System.out.println(place);

@@ -25,17 +25,18 @@ public class User {
     String lastName;
     String email;
     // enumeration for role
+    String authority;
     @ManyToMany
     @ToString.Exclude
     List<Place> favoritePlaces;
 
-    public User(String username, String password, String firstName, String lastName, String email) {
+    public User(String username, String password, String firstName, String lastName, String email, String authority) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        favoritePlaces = new ArrayList<>();
+        this.favoritePlaces = new ArrayList<>();
+        this.authority = authority;
     }
-
 }

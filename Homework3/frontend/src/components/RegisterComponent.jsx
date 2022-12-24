@@ -44,7 +44,7 @@ class RegisterComponent extends Component {
           email:this.state.email
       }
       console.log(cred)
-      fetch("http://localhost:8080/register",{
+      fetch("http://localhost:8080/login/register",{
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(cred) 

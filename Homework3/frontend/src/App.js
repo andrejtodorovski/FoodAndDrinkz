@@ -18,22 +18,26 @@ import FindUserLocationComponent from './components/FindUserLocationComponent';
 import PlaceComponent from './components/PlaceComponent';
 import PlaceComponentWithRoute from './components/PlaceComponentWithRoute';
 import TopNavBarComponentDark from './components/TopNavBarComponentDark';
+import ListFavoritePlacesComponent from './components/ListFavoritePlacesComponent'
+import ShowProfileComponent from './components/ShowProfileComponent';
 function App() {
   return (
     <Router>
       <div className="container">
         <Routes>
           <Route exact path='/' element = {<><div className='ccc pb-5'><TopNavBarComponent/><StartPageComponent/><MostVisitedAndTopRatedComponent/></div></>}></Route>
-          <Route exact path='/bars' element = {<><LoggedTopNavBarComponent/><BarsNavBarComponent/><ListBarsComponent/></>}></Route>
-          <Route exact path='/restaurants' element = {<><LoggedTopNavBarComponent/><RestaurantsNavBarComponent/><ListRestaurantsComponent/></>}></Route>
-          <Route exact path='/cafes' element = {<><LoggedTopNavBarComponent/><CafesNavBarComponent/><ListCafesComponent/></>}></Route>
-          <Route exact path='/login' element = {<><LoginComponent/></>}></Route>
-          <Route exact path='/register' element = {<><RegisterComponent/></>}></Route>
-          <Route exact path='/place/add' element = {<><TopNavBarComponentDark/><AddPlaceComponent/></>}></Route>
-          <Route exact path='/test' element = {<><TopNavBarComponentDark/><FindUserLocationComponent/></>}></Route>
-          <Route exact path='/closest' element = {<><TopNavBarComponentDark/><ShowClosestComponent/></>}></Route>
+          <Route exact path='/bars' element = {<><TopNavBarComponent/><BarsNavBarComponent/><ListBarsComponent/></>}></Route>
+          <Route exact path='/restaurants' element = {<><TopNavBarComponent/><RestaurantsNavBarComponent/><ListRestaurantsComponent/></>}></Route>
+          <Route exact path='/cafes' element = {<><TopNavBarComponent/><CafesNavBarComponent/><ListCafesComponent/></>}></Route>
+          <Route exact path='/login' element = {<><TopNavBarComponent/><LoginComponent/></>}></Route>
+          <Route exact path='/register' element = {<><TopNavBarComponent/><RegisterComponent/></>}></Route>
+          <Route exact path='/place/add' element = {<><TopNavBarComponent/><AddPlaceComponent/></>}></Route>
+          <Route exact path='/test' element = {<><TopNavBarComponent/><FindUserLocationComponent/></>}></Route>
+          <Route exact path='/closest' element = {<><TopNavBarComponent/><ShowClosestComponent/></>}></Route>
           <Route exact path='/:id' element = {<><TopNavBarComponent/><PlaceComponentWithRoute/></>}></Route>
-          <Route exact path='/findClosest' element = {<><TopNavBarComponentDark/><FindUserLocationComponent/></>}></Route>
+          <Route exact path='/findClosest' element = {<><TopNavBarComponent/><FindUserLocationComponent/></>}></Route>
+          <Route exact path='/favorites' element = {<><TopNavBarComponent/><ListFavoritePlacesComponent/></>}></Route>
+          <Route exact path='/profile' element = {<><TopNavBarComponent/><ShowProfileComponent/></>}></Route>
         </Routes>
       </div>
     </Router>

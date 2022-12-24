@@ -180,3 +180,12 @@
     margin: auto;
 
 }
+.buttonStyle {
+    border-radius : 20px;
+};
+.logoStyle{
+    padding: 30px;
+};
+.logStyle{
+    padding: 5px;
+}
