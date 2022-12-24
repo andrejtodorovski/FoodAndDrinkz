@@ -99,4 +99,9 @@ public class PlaceServiceImplementation implements PlaceService {
     public List<Place> getByAttributeAndCategory(String attribute, String category) {
         return placeRepository.findAllByCategoryIgnoreCaseAndAttributesContainingIgnoreCase(category,attribute);
     }
+
+    @Override
+    public List<Place> findByCategory(String category) {
+        return placeRepository.findAllByCategoryIgnoreCase(category);
+    }
 }

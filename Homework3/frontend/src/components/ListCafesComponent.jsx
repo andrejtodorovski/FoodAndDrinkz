@@ -1,21 +1,52 @@
 import React, { Component } from 'react';
 import CafesService from '../services/CafesService';
 import { Link } from 'react-router-dom'
+import AttributesService from '../services/AttributesService';
 
 class ListCafesComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cafes: []
+            cafes: [],
+            attributes: []
         }
     }
     componentDidMount(){
         CafesService.getCafes().then((res) => {
             this.setState({cafes: res.data});
         });
+        AttributesService.getAttributesForCafe().then((r)=>{
+            this.setState({attributes: r.data});
+        });
+        }
+        handleChange = (event) => {
+            let cred = {
+                category: "Cafe",
+                attribute: event.target.value
+            }
+            console.log(cred)
+            fetch("http://localhost:8080/place/attributeAll",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(cred) 
+            }).then((response)=>
+                response.json()
+            ).then((user)=>{
+                this.setState({cafes: user})
+            })
     }
     render() {
         return (
+            <div className='grayBackground'>
+                <div className='mr-5'>
+                    <select className='form-control w-25 ml-5 mb-5' required 
+                        onChange={this.handleChange}>
+                            <option value="default">Choose attribute</option>
+                    {this.state.attributes.map(at =>
+                    <option value={at}>{at}</option>
+                )}
+                    </select>
+                    </div>
             <div className='listContainer grayBackground pt-2'>
                 {this.state.cafes.map(cafe =>
                 <div className='listItem '>
@@ -28,6 +59,7 @@ class ListCafesComponent extends Component {
                     <Link to={`/${cafe.id}`}><img className='icon' src='https://cdn-icons-png.flaticon.com/512/2985/2985150.png'></img></Link>
                 </div>
                 )}
+            </div>
             </div>
         );
     }

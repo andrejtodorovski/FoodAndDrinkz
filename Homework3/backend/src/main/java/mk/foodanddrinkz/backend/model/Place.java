@@ -71,7 +71,9 @@ public class Place {
     public String[] getAttributes(){
         return attributes.split(";");
     }
-
+    public String getA(){
+        return attributes;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
