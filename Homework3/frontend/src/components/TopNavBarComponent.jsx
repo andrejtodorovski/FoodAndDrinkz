@@ -50,8 +50,8 @@ function TopNavBarComponent() {
                 <button type="button" className="btn maroonBut ml-5 mt-2 buttonStyle"><span className="logoStyle"><Link to="/" className='text-white'>PinPoint</Link></span></button>
             </div>
             <div className='btn2'>
-                <button type="button" className="btn whiteBut m-2 buttonStyle"><span className="logStyle"><Link to="/login" className='text-dark'>Login</Link></span></button>
-                <button type="button" className="btn grayBut m-2 buttonStyle"><span className="logStyle"><Link to="/register" className='text-white'>Register</Link></span></button>
+                <button type="button" className="btn blueBackground m-2 buttonStyle"><span className="logStyle"><Link to="/login" className='text-white'>Login</Link></span></button>
+                <button type="button" className="btn orangeBackground m-2 buttonStyle"><span className="logStyle"><Link to="/register" className='text-white'>Register</Link></span></button>
             </div>
             </>
             }
@@ -61,9 +61,9 @@ function TopNavBarComponent() {
                 <button type="button" className="btn maroonBut ml-5 mt-2 buttonStyle"><span className="logoStyle"><Link to="/" className='text-white'>PinPoint</Link></span></button>
             </div>
             <div className='btn2 mr-5'>
-                <button type="button" className="btn whiteBut m-2 buttonStyle"><span className="logStyle"><Link to="/favorites" className='text-dark'>Favorites</Link></span></button>
-                <button type="button" className="btn grayBut m-2 buttonStyle"><span className="logStyle"><Link to="/profile" className='text-white'>Profile</Link></span></button>
-                <button type="button" className="btn grayBut m-2 buttonStyle" onClick={handleLogout}><span className="logStyle text-white">Sign out</span></button>
+                <button type="button" className="btn blueBackground m-2 buttonStyle"><span className="logStyle"><Link to="/favorites" className='text-white'>Favorites</Link></span></button>
+                <button type="button" className="btn orangeBackground m-2 buttonStyle"><span className="logStyle"><Link to="/profile" className='text-white'>Profile</Link></span></button>
+                <button type="button" className="btn whiteBut m-2 buttonStyle" onClick={handleLogout}><span className="logStyle text-dark">Sign out</span></button>
 
             </div>
             </>

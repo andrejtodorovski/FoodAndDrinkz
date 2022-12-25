@@ -1,7 +1,23 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
+import AdminService from '../services/AdminService';
 import '../styles/TopNavBarComponent.css'
 class StartPageComponent extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            h: [],
+            isAdmin: false
+        }
+    }
+    componentDidMount(){
+        AdminService.getAdmin().then((res) => {
+            this.setState({h: res.data});
+            if(res.data==="admin"){
+                this.setState({isAdmin: true})
+            }
+        });
+    }
     render() {
         const buttonStyle = {
             borderRadius: "20px"
@@ -40,7 +56,8 @@ class StartPageComponent extends Component {
                             <img className='icon' src='https://cdn-icons-png.flaticon.com/512/751/751621.png'></img>
                             <span style={logStyle}><Link to="/cafes" className='text-white'>Cafes</Link></span>
                         </button>
-                        <button type="button" class="btn"><span><Link to="/place/add">Add Place</Link></span></button>
+                        {this.state.isAdmin && 
+                            <><button type="button" class="btn topNavBarContainerDark borderRadiusBut m-2"><span><Link to="/place/add" className='text-white'>Add New Place</Link></span></button></>}
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PlaceService from '../services/PlaceService';
 import {Link} from 'react-router-dom'
+import AdminService from '../services/AdminService'
 class AddPlaceComponent extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +22,8 @@ class AddPlaceComponent extends Component {
             sunday:'',
             imgUrl:'',
             latitude:'',
-            longitude:''
+            longitude:'',
+            h:''
         }
         this.changeAddress = this.changeAddress.bind(this);
         this.changeAttributes = this.changeAttributes.bind(this);
@@ -41,6 +43,14 @@ class AddPlaceComponent extends Component {
         this.changeTuesday = this.changeTuesday.bind(this);
         this.changeWednesday = this.changeWednesday.bind(this);
         this.savePlace = this.savePlace.bind(this);
+    }
+    componentDidMount(){
+      AdminService.getAdmin().then((res) => {
+        this.setState({h: res.data});
+        if(res.data==="error"){
+            window.location.href="/"
+        }
+    });
     }
     savePlace = (e) => {
         e.preventDefault();
@@ -124,16 +134,15 @@ class AddPlaceComponent extends Component {
     }
     render() {
         return (
-            <div className='container'>
-                <div className="Auth-form-container">
-                  <form className="Auth-form">
+            <div className='topNavBarContainerDark minusM pt-5'>
+                <div className='d-flex flex-column text-center loginFormDiv'>
+                  <form className="Auth-form" onSubmit={this.savePlace}>
                     <div className="Auth-form-content">
-                      <h3 className="Auth-form-title">Add a Place</h3>
+                      <h3 className="text-white">Add a Place</h3>
                       <div className="form-group mt-3">
-                        <label>Name</label>
                         <input
                           type="text"
-                          className="form-control mt-1"
+                          className="form-control mt-1 borderRadiusBut"
                           placeholder="Enter place name"
                           value={this.state.name}
                           onChange={this.changeTitle}
@@ -141,10 +150,9 @@ class AddPlaceComponent extends Component {
                         />
                       </div>
                       <div className="form-group mt-3">
-                        <label>Rating</label>
                         <input
                           type="number"
-                          className="form-control mt-1"
+                          className="form-control mt-1 borderRadiusBut"
                           placeholder="Enter rating"
                           min={1}
                           max={5}
@@ -155,10 +163,8 @@ class AddPlaceComponent extends Component {
                         />  
                       </div>
                       <div className="form-group mt-3">
-                        <label>Review Count</label>
                         <input
-                          type="number"
-                          className="form-control mt-1"
+                          className="form-control mt-1 borderRadiusBut"
                           placeholder="Enter review count"
                           min={1}
                           step={1}
@@ -168,8 +174,7 @@ class AddPlaceComponent extends Component {
                         />  
                       </div>
                       <div className="form-group mt-3">
-                        <label>Category</label>
-                        <select className='form-control mt-1' required value={this.state.category}
+                        <select className='form-control mt-1 borderRadiusBut' required value={this.state.category}
                           onChange={this.changeCategory}>
                         <option value="Bar">Bar</option>
                         <option value="Cafe">Cafe</option>
@@ -177,10 +182,9 @@ class AddPlaceComponent extends Component {
                         </select>
                       </div>
                       <div className="form-group mt-3">
-                        <label>Attributes</label>
                         <input
                           type="text"
-                          className="form-control mt-1"
+                          className="form-control mt-1 borderRadiusBut"
                           placeholder="Enter place attributes"
                           required
                           value={this.state.attributes}
@@ -188,10 +192,9 @@ class AddPlaceComponent extends Component {
                         />
                       </div>
                       <div className="form-group mt-3">
-                        <label>Address</label>
                         <input
                           type="text"
-                          className="form-control mt-1"
+                          className="form-control mt-1 borderRadiusBut"
                           placeholder="Enter place address"
                           required
                           value={this.state.address}
@@ -199,10 +202,9 @@ class AddPlaceComponent extends Component {
                         />
                       </div>
                       <div className="form-group mt-3">
-                        <label>Phone Number</label>
                         <input
                           type="text"
-                          className="form-control mt-1"
+                          className="form-control mt-1 borderRadiusBut"
                           placeholder="Enter place phone number"
                           required
                           value={this.state.phoneNumber}
@@ -210,88 +212,86 @@ class AddPlaceComponent extends Component {
                         />
                       </div>
                       <div className="form-group mt-3">
-                        <label>Monday hours</label>
                         <input
                           type="text"
-                          className="form-control mt-1"
+                          className="form-control mt-1 borderRadiusBut"
                           placeholder="Enter monday hours in format 08:00AM-08:00PM"
                           required
+                          pattern="[0-1][0-9]:[0-5][0-9]AM-[0-1][0-9]:[0-5][0-9]PM"
                           value={this.state.monday}
                           onChange={this.changeMonday}
                         />
                       </div>
                       <div className="form-group mt-3">
-                        <label>Tuesday hours</label>
                         <input
                           type="text"
-                          className="form-control mt-1"
+                          className="form-control mt-1 borderRadiusBut"
                           placeholder="Enter tuesday hours in format 08:00AM-08:00PM"
                           required
+                          pattern="[0-1][0-9]:[0-5][0-9]AM-[0-1][0-9]:[0-5][0-9]PM"
                           value={this.state.tuesday}
                           onChange={this.changeTuesday}
                         />
                       </div>
                       <div className="form-group mt-3">
-                        <label>Wednesday hours</label>
                         <input
                           type="text"
-                          className="form-control mt-1"
+                          className="form-control mt-1 borderRadiusBut"
                           placeholder="Enter wednesday hours in format 08:00AM-08:00PM"
                           required
+                          pattern="[0-1][0-9]:[0-5][0-9]AM-[0-1][0-9]:[0-5][0-9]PM"
                           value={this.state.wednesday}
                           onChange={this.changeWednesday}
                         />
                       </div>
                       <div className="form-group mt-3">
-                        <label>Thursday hours</label>
                         <input
                           type="text"
-                          className="form-control mt-1"
+                          className="form-control mt-1 borderRadiusBut"
                           placeholder="Enter thursday hours in format 08:00AM-08:00PM"
                           required
+                          pattern="[0-1][0-9]:[0-5][0-9]AM-[0-1][0-9]:[0-5][0-9]PM"
                           value={this.state.thursday}
                           onChange={this.changeThursday}
                         />
                       </div>
                       <div className="form-group mt-3">
-                        <label>Friday hours</label>
                         <input
                           type="text"
-                          className="form-control mt-1"
+                          className="form-control mt-1 borderRadiusBut"
                           placeholder="Enter friday hours in format 08:00AM-08:00PM"
                           required
+                          pattern="[0-1][0-9]:[0-5][0-9]AM-[0-1][0-9]:[0-5][0-9]PM"
                           value={this.state.friday}
                           onChange={this.changeFriday}
                         />
                       </div>
                       <div className="form-group mt-3">
-                        <label>Saturday hours</label>
                         <input
                           type="text"
-                          className="form-control mt-1"
+                          className="form-control mt-1 borderRadiusBut"
                           placeholder="Enter saturday hours in format 08:00AM-08:00PM"
                           required
+                          pattern="[0-1][0-9]:[0-5][0-9]AM-[0-1][0-9]:[0-5][0-9]PM"
                           value={this.state.saturday}
                           onChange={this.changeSaturday}
                         />
                       </div>
                       <div className="form-group mt-3">
-                        <label>Sunday hours</label>
                         <input
                           type="text"
-                          className="form-control mt-1"
+                          className="form-control mt-1 borderRadiusBut"
                           placeholder="Enter sunday hours in format 08:00AM-08:00PM"
                           required 
-                          // pattern="[0-1][0-9]:[0-5][0-9]AM-[0-1][0-9]:[0-5][0-9]PM"
+                          pattern="[0-1][0-9]:[0-5][0-9]AM-[0-1][0-9]:[0-5][0-9]PM"
                           value={this.state.sunday}
                           onChange={this.changeSunday}
                         />
                       </div>
                       <div className="form-group mt-3">
-                        <label>Image Url</label>
                         <input
                           type="text"
-                          className="form-control mt-1"
+                          className="form-control mt-1 borderRadiusBut"
                           placeholder="Enter place image url"
                           required
                           value={this.state.imgUrl}
@@ -299,10 +299,9 @@ class AddPlaceComponent extends Component {
                         />
                       </div>
                       <div className="form-group mt-3">
-                        <label>Latitude</label>
                         <input
                           type="text"
-                          className="form-control mt-1"
+                          className="form-control mt-1 borderRadiusBut"
                           placeholder="Enter place latitude"
                           required
                           value={this.state.latitude}
@@ -310,10 +309,9 @@ class AddPlaceComponent extends Component {
                         />
                       </div>
                       <div className="form-group mt-3">
-                        <label>Longitude</label>
                         <input
                           type="text"
-                          className="form-control mt-1"
+                          className="form-control mt-1 borderRadiusBut"
                           placeholder="Enter place longitude"
                           required
                           value={this.state.longitude}
@@ -321,10 +319,10 @@ class AddPlaceComponent extends Component {
                         />
                       </div>
                       <div className="d-grid gap-2 mt-3">
-                        <button type="submit" className="btn btn-primary" onClick={this.savePlace}>
-                          Add
+                        <button type="submit" className="btn maroonBut text-white mr-5 pl-5 pr-5 borderRadiusBut">
+                          Submit
                         </button>
-                        <button type="button" className="btn btn-warning"><span><Link to="/">Home</Link></span></button>
+                        <div className="btn btn-primary pl-5 pr-5 borderRadiusBut" ><span><Link to="/" className='text-white'>Home</Link></span></div>
                       </div>
                     </div>
                   </form>
