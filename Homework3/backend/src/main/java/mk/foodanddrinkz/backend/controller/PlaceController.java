@@ -51,11 +51,10 @@ public class PlaceController {
     }
 
     @PostMapping("/new/add")
-    public Place addPlace(@RequestBody Place place) {
+    public void addPlace(@RequestBody Place place) {
         // ERROR: duplicate key value violates unique constraint
         System.out.println(place);
         //return placeService.save(place);
-        return null;
     }
 
     @PostMapping("/closest")
