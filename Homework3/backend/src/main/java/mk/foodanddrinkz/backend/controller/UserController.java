@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/user")
@@ -46,6 +47,25 @@ public class UserController {
         else {
             System.out.println("NEMA USER");
             return ResponseEntity.notFound();
+        }
+    }
+    @SneakyThrows
+    @GetMapping("/getadmin")
+    public String isUserAdmin(HttpServletRequest request){
+        if(request.getServletContext().getAttribute("hasLoggedIn")!=null){
+            User u = (User) request.getServletContext().getAttribute("user");
+            if(Objects.equals(u.getAuthority(), "ADMIN")){
+                System.out.println("admin");
+                return "admin";
+            }
+            else {
+                System.out.println("user");
+                return "user";
+            }
+        }
+        else {
+            System.out.println("error");
+            return "error";
         }
     }
     // Returning the favorite places for a user, if the user exists
