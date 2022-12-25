@@ -48,7 +48,7 @@ function TopNavBarDarkComponent() {
                     </Link></span></button>
             </div>
             <div className='btn2'>
-                <button type="button" className="btn blueBackground m-2 buttonStyle"><span className="logStyle"><Link to="/login" className='text-dark'>Login</Link></span></button>
+                <button type="button" className="btn blueBackground m-2 buttonStyle"><span className="logStyle"><Link to="/login" className='text-white'>Login</Link></span></button>
                 <button type="button" className="btn orangeBackground m-2 buttonStyle"><span className="logStyle"><Link to="/register" className='text-white'>Register</Link></span></button>
             </div>
             </>
