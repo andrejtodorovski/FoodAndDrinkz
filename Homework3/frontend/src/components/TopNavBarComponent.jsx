@@ -47,7 +47,7 @@ function TopNavBarComponent() {
             {isLogged &&
             <>
             <div className='btn1'>
-                <button type="button" className="btn grayBackground ml-5 mt-2 buttonStyle"><span className="logoStyle"><Link to="/" className='text-white'>
+                <button type="button" className="btn ml-5 mt-2 buttonStyle"><span className="logoStyle"><Link to="/" className='text-white'>
                     <img src='https://i.ibb.co/PTYDKG7/Pin-Point-Light.jpg' alt='logo-light'></img>
                     </Link></span></button>
             </div>
