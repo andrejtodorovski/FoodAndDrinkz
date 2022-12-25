@@ -12,6 +12,7 @@ import PlaceService from '../services/PlaceService';
 import '../styles/TopNavBarComponent.css'
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlJ9QMrY5M7y1LHA3ZpyYNLmdfATPreSw&callback=initMap"></script>
 function PlaceComponentWithRoute() {
+    
     const [ libraries ] = useState(['places']);
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyDlJ9QMrY5M7y1LHA3ZpyYNLmdfATPreSw",
@@ -21,6 +22,9 @@ function PlaceComponentWithRoute() {
   const [haveData, setData] = useState(false)
   const [place, setPlace] = useState('')
   const [isClick, setClicked] = useState('')
+  const [isLogged, setLogged] = useState()
+  const [isFetched, setFetched] = useState(false)
+
   useEffect(() => {
     if(haveData===false){
     PlaceService.getPlace(window.location.pathname.substring(1)).then(res => {
@@ -29,10 +33,38 @@ function PlaceComponentWithRoute() {
     setData(true);
         //  console.log(place)
     }
+    console.log(isFetched)
+        if(isFetched===false){
+            fetch("http://localhost:8080/user/check",{
+            method:"GET",
+            headers:{"Content-Type":"application/json"},
+        }).then((response)=>
+        response.json()
+        ).then((user)=>{
+        console.log(user.status)
+        if(user.status!==406){
+            setLogged(false)
+            
+        }
+        else{
+            setLogged(true)
+        }
+        })
+        }
     });
+    
   const isClicked=(e)=>{
     e.preventDefault()
     setClicked(true)
+}
+const addFavorites=(e)=>{
+    e.preventDefault()
+    let id = window.location.pathname.substring(1);
+    console.log(id)
+    console.log("tuka sum")
+    PlaceService.addPlaceToFavorites(window.location.pathname.substring(1)).then(
+        alert("Succesfully added to favorites")
+    );
 }
 
     return (
@@ -44,12 +76,18 @@ function PlaceComponentWithRoute() {
                         <div><img className='icon mr-2' src='https://cdn-icons-png.flaticon.com/512/1828/1828961.png'></img></div>
                         <div><h5 className='textDarkGray'>{place.rating}</h5></div>
                     </div>
-                    <div className='d-flex justify-content-between'>
+                    <div className='d-flex justify-content-between flex-column'>
                         <div><span className='textMaroon font-weight-bold'>Review count: </span><span>{place.reviewCount}</span></div>
-                        <div><span><button className='btn grayBut text-white borderRadiusBut styleRoute mr-5' onClick={isClicked}>
-                            <img className="icon2 mr-2" src='https://cdn-icons-png.flaticon.com/512/3061/3061732.png'></img>
+                        <div className='d-flex'><span><button className='btn redBut text-white borderRadiusBut styleRoute mr-5' onClick={isClicked}>
+                            <img className="icon2 mr-2" src='https://cdn-icons-png.flaticon.com/512/3061/3061732.png' alt='mapIcon'></img>
                             Show on map
                             </button></span>
+                            {!isLogged && <>
+                            <span><button className='btn blueBackground text-white borderRadiusBut styleRoute mr-5 pr-3' onClick={addFavorites}>
+                            <img className="icon mr-1" src='https://cdn-icons-png.flaticon.com/512/4208/4208420.png' alt='favoritesIcon'></img>
+                            Add to favorites
+                            </button></span>
+                            </>}
                             </div>
                     </div>
                     <div>
