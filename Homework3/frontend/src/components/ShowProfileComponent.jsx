@@ -22,10 +22,16 @@ class ShowProfileComponent extends Component {
             <div className='grayBackground'>
                 <div><h1 className='ml-5 p-5'><span className='blueText'>Your Profile</span></h1></div>
 
-            <div className='listContainer grayBackground pt-2'>
+            <div className='grayBackground pt-2 m-5'>
                 {
                     this.state.profile.map(p =>
-                        <div>{p.username}</div>)
+                        <div className='w-5 pb-5'>
+                        <div className='d-flex justify-content-around mb-4'><div>First Name: </div><div>{p.firstName}</div></div>
+                        <div className='d-flex justify-content-around mb-4'><div>Last Name: </div><div>{p.lastName}</div></div>
+                        <div className='d-flex justify-content-around mb-4'><div>Username: </div><div>{p.username}</div></div>
+                        <div className='d-flex justify-content-around mb-4'><div>Email: </div><div>{p.email}</div></div>
+                        </div>
+                        )
                 }
             </div>
             </div>

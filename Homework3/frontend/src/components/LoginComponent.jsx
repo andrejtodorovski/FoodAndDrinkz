@@ -108,39 +108,44 @@ class LoginComponent extends Component {
       if(user.status!==406){
         window.location.href='/'
       }
+      else{
+        alert("User doesn't exist. Please check your credentials and try again");
+      }
     })
     }
     render() {
-        //const mystyle={ 
-        //backgroundImage:`url(${background})` };
         return (
+          <div className='backImgLog'>
             <div className='d-flex flex-column text-center loginFormDiv'>
-              <div classname='loginText'>Login</div>
+              <div classname='loginText'><h2 className='text-white'>Login</h2></div>
               <div>
-                <form className='d-flex flex-column text-center'>
+                <form className='d-flex flex-column text-center' onSubmit={this.handleSubmit}>
                     <input
                       type="username"
-                      className="mt-1"
+                      className="mt-4 form-control borderRadiusBut"
                       placeholder="Username"
                       value={this.state.username}
                       onChange={this.handleUsername}
+                      required
                     />
                     <input
                       type="password"
-                      className="mt-1"
+                      className="mt-4 form-control borderRadiusBut"
                       placeholder="Password"
                       value={this.state.password}
                       onChange={this.handlePassword}
+                      required
                     />
-                    <div className='d-flex text-center justify-content-between'>
-                      <button type='submit' onClick={this.handleSubmit}>Login</button>
+                    <div className='d-flex text-center justify-content-between mt-4'>
+                      <button type='submit' className='btn maroonBut text-white borderRadiusBut styleRoute mr-2 pl-5 pr-5 mt-3 mb-3'>Login</button>
                       <div>
-                        <div>don't have an account?</div>
+                        <div className='text-white'>don't have an account?</div>
                         <div><Link to='/register'>Register here</Link></div>
                       </div>
                     </div>
                 </form>
               </div>
+            </div>
             </div>
         );
     }
