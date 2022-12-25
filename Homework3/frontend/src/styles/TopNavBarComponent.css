@@ -139,7 +139,7 @@
     justify-content: space-around;
 }
 .listItem{
-    width: 21%;
+    width: 17%;
     padding-bottom: 1%;
     background: #ffffff;
     margin-bottom: 2%;
@@ -218,4 +218,7 @@
 }
 .minusM{
     margin-top: -2px;
+}
+.mapPadding{
+    margin-left: 15rem!important;
 }

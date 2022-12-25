@@ -24,7 +24,7 @@ import TopNavBarDarkComponent from './components/TopNavBarDarkComponent'
 function App() {
   return (
     <Router>
-      <div className="container">
+      <div>
         <Routes>
           <Route exact path='/' element = {<><div className='ccc pb-5'><TopNavBarComponent/><StartPageComponent/><MostVisitedAndTopRatedComponent/></div></>}></Route>
           <Route exact path='/bars' element = {<><TopNavBarComponent/><BarsNavBarComponent/><ListBarsComponent/></>}></Route>

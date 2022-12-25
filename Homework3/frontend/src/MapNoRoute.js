@@ -47,12 +47,12 @@ import {
         h='70vh'
         w='70vw'
       >
-        <Box position='absolute' left={0} top={0} h='100%' w='86%' className='mr-5 ml-5 mb-5'>
+        <Box position='absolute' left={0} top={0} h='100%' w='100%' className='mr-5 ml-5 mb-5 mapPadding pb-5'>
           {/* Google Map Box */}
           <GoogleMap
             center={center}
             zoom={15}
-            mapContainerStyle={{ width: '90%', height: '90%' }}
+            mapContainerStyle={{ width: '100%', height: '100%' }}
             options={{
               zoomControl: false,
               streetViewControl: false,

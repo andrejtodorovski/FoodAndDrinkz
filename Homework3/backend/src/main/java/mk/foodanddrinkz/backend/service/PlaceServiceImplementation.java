@@ -26,12 +26,12 @@ public class PlaceServiceImplementation implements PlaceService {
 
     @Override
     public List<Place> getTopRated() {
-        return placeRepository.findAllByOrderByRatingDesc().subList(0,5);
+        return placeRepository.findAllByOrderByRatingDesc().subList(0,8);
     }
 
     @Override
     public List<Place> getMostVisited() {
-        return placeRepository.findAllByOrderByReviewCountDesc().subList(0,5);
+        return placeRepository.findAllByOrderByReviewCountDesc().subList(0,8);
     }
 
     @Override

@@ -19,6 +19,7 @@ import {
     DirectionsRenderer,
   } from '@react-google-maps/api'
   import { useRef, useState, useEffect } from 'react'
+  import "./styles/TopNavBarComponent.css"
   
 
   
@@ -109,12 +110,12 @@ import {
         h='70vh'
         w='70vw'
       >
-        <Box position='absolute' left={0} top={0} h='100%' w='100%' className='ml-5 mt-5'>
+        <Box position='absolute' left={0} top={0} h='100%' w='100%' className='ml-5 mt-5 mapPadding pb-5'>
           {/* Google Map Box */}
           <GoogleMap
             center={center}
             zoom={15}
-            mapContainerStyle={{ width: '90%', height: '90%' }}
+            mapContainerStyle={{ width: '100%', height: '100%' }}
             options={{
               zoomControl: false,
               streetViewControl: false,
@@ -139,7 +140,7 @@ import {
           shadow='base'
           minW='container.md'
           zIndex='1'  
-          className='mt-5'
+          className='mt-5 mapPadding'
         >
           <HStack spacing={2} justifyContent='space-between'>
             <Box flexGrow={1}>
