@@ -43,7 +43,9 @@ function TopNavBarDarkComponent() {
             {isLogged &&
             <>
             <div className='btn1'>
-                <button type="button" className="btn maroonBut ml-5 mt-2 buttonStyle"><span className="logoStyle"><Link to="/" className='text-white'>PinPoint</Link></span></button>
+                <button type="button" className="btn ml-5 mt-2 buttonStyle topNavBarContainerDark"><span className="logoStyle"><Link to="/" className='text-white'>
+                    <img src='https://i.ibb.co/X20ttwm/Pin-Point-Dark.jpg' alt='logo-dark'></img>
+                    </Link></span></button>
             </div>
             <div className='btn2'>
                 <button type="button" className="btn blueBackground m-2 buttonStyle"><span className="logStyle"><Link to="/login" className='text-dark'>Login</Link></span></button>
@@ -54,7 +56,9 @@ function TopNavBarDarkComponent() {
             {!isLogged && 
             <>
             <div className='btn1'>
-                <button type="button" className="btn maroonBut ml-5 mt-2 buttonStyle"><span className="logoStyle"><Link to="/" className='text-white'>PinPoint</Link></span></button>
+                <button type="button" className="btn ml-5 mt-2 buttonStyle topNavBarContainerDark"><span className="logoStyle"><Link to="/" className='text-white'>
+                    <img src='https://i.ibb.co/X20ttwm/Pin-Point-Dark.jpg' alt='logo-dark'></img>
+                    </Link></span></button>
             </div>
             <div className='btn2 mr-5'>
                 <button type="button" className="btn blueBackground m-2 buttonStyle"><span className="logStyle"><Link to="/favorites" className='text-white'>Favorites</Link></span></button>

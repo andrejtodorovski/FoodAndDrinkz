@@ -15,7 +15,9 @@ class TopNavBarComponentDark extends Component {
         return (
             <div className='topNavBarContainerDark pl-5'>
                 <div className='btn1'>
-                    <button type="button" className="btn maroonBut ml-5 mt-2" style={buttonStyle}><span style={logoStyle}><Link to="/" className='text-white'>PinPoint</Link></span></button>
+                    <button type="button" className="btn ml-5 mt-2 topNavBarContainerDark" style={buttonStyle}><span style={logoStyle}><Link to="/">
+                        <img src='https://i.ibb.co/X20ttwm/Pin-Point-Dark.jpg' alt='logo-dark'></img>
+                        </Link></span></button>
                 </div>
             </div>
             

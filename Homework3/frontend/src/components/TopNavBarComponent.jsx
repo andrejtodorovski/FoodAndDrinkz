@@ -47,7 +47,9 @@ function TopNavBarComponent() {
             {isLogged &&
             <>
             <div className='btn1'>
-                <button type="button" className="btn maroonBut ml-5 mt-2 buttonStyle"><span className="logoStyle"><Link to="/" className='text-white'>PinPoint</Link></span></button>
+                <button type="button" className="btn grayBackground ml-5 mt-2 buttonStyle"><span className="logoStyle"><Link to="/" className='text-white'>
+                    <img src='https://i.ibb.co/PTYDKG7/Pin-Point-Light.jpg' alt='logo-light'></img>
+                    </Link></span></button>
             </div>
             <div className='btn2'>
                 <button type="button" className="btn blueBackground m-2 buttonStyle"><span className="logStyle"><Link to="/login" className='text-white'>Login</Link></span></button>
@@ -58,7 +60,9 @@ function TopNavBarComponent() {
             {!isLogged && 
             <>
             <div className='btn1'>
-                <button type="button" className="btn maroonBut ml-5 mt-2 buttonStyle"><span className="logoStyle"><Link to="/" className='text-white'>PinPoint</Link></span></button>
+                <button type="button" className="btn ml-5 mt-2 buttonStyle"><span className="logoStyle"><Link to="/" className='text-white'>
+                    <img src='https://i.ibb.co/PTYDKG7/Pin-Point-Light.jpg' alt='logo-light'></img>
+                    </Link></span></button>
             </div>
             <div className='btn2 mr-5'>
                 <button type="button" className="btn blueBackground m-2 buttonStyle"><span className="logStyle"><Link to="/favorites" className='text-white'>Favorites</Link></span></button>
