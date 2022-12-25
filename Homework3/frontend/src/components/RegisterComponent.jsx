@@ -53,7 +53,8 @@ class RegisterComponent extends Component {
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(cred) 
-    }).then(response => this.setState({p:response.ok}))
+    }).then(response => this.setState({p:response.ok}),
+    window.location.href="/login")
   }
   else{
     alert("Passwords don't match")
@@ -115,7 +116,7 @@ class RegisterComponent extends Component {
                   required
                 />
                 <div className='d-flex text-center justify-content-between mt-4'>
-                  <button type='submit' onClick={this.handleSubmit} className='btn maroonBut text-white borderRadiusBut styleRoute mr-5'>Create Account</button>
+                  <button type='submit' className='btn maroonBut text-white borderRadiusBut styleRoute mr-5'>Create Account</button>
                   <div>
                     <div className='text-white'>already have an account?</div>
                     <div><Link to='/login'>Log in here</Link></div>

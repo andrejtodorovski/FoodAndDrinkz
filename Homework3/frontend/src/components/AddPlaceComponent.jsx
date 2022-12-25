@@ -75,6 +75,7 @@ class AddPlaceComponent extends Component {
         }
         console.log('place => ' + JSON.stringify(place));
         PlaceService.addPlace(place);
+        window.location.href="/";
         // fetch("http://localhost:8080/place/add",{
         // method:"POST",
         // headers:{"Content-Type":"application/json"},
