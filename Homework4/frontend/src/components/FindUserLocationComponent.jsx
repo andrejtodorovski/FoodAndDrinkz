@@ -1,9 +1,7 @@
-// /*global google*/
-  import { Link } from 'react-router-dom'
   import {
     useJsApiLoader,
   } from '@react-google-maps/api'
-  import { useEffect,useState } from 'react'
+  import { useState } from 'react'
   import MapNoRoute from '../MapNoRoute'
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlJ9QMrY5M7y1LHA3ZpyYNLmdfATPreSw&callback=initMap"></script>
   function FindUserLocationComponent() {
@@ -58,7 +56,6 @@
     const findClosest=(e)=>{
         e.preventDefault()
         const loc = {longitude,latitude,radius,category}
-        console.log(loc)
         fetch("http://localhost:8080/place/closest",{
             method:"POST",
             headers:{"Content-Type":"application/json"},

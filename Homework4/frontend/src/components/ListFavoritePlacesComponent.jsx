@@ -27,11 +27,11 @@ class ListFavoritePlacesComponent extends Component {
                 <div className='listItem '>
                     <img className='listImg' src={f.imgUrl}></img>
                     <div className='d-flex justify-content-center'>
-                            <div><img className='icon2 mr-2' src='https://cdn-icons-png.flaticon.com/512/1828/1828961.png'></img></div>
+                            <div><img className='icon2 mr-2' src='https://cdn-icons-png.flaticon.com/512/1828/1828961.png' alt='Description'></img></div>
                             <div><h6 className='textDarkGray mt-1'>{f.rating}</h6></div>
                     </div>
                     <h5 className='text-center mt-2'>{f.name}</h5>
-                    <Link to={`/${f.id}`}><img className='icon' src='https://cdn-icons-png.flaticon.com/512/2985/2985150.png'></img></Link>
+                    <Link to={`/${f.id}`}><img className='icon' src='https://cdn-icons-png.flaticon.com/512/2985/2985150.png' alt='Description'></img></Link>
                 </div>
                 )}
             </div>

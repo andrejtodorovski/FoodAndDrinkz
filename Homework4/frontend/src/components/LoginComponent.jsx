@@ -1,73 +1,3 @@
-// import React from 'react';
-// import { useNavigate, useHistory } from 'react-router';
-// import { useState } from 'react'
-
-// function LoginComponent() {
-    
-//   const [username, setUsername] = useState('');
-//   const [password, setPassword] = useState('');
-  
-//   const navigate = useNavigate();
-
-//   const handleUsername = (event) => {
-//     setUsername(event.username);
-//   };
-//   const handlePassword = (event) => {
-//     setPassword(event.password);
-//   };
-
-//   const handleLogin=(e)=>{
-//       e.preventDefault()
-//       const loc = {username,password}
-//       console.log(loc)
-//       fetch("http://localhost:8080/login/",{
-//         mode:'no-cors',
-//         method:"POST",
-//         headers:{"Content-Type":"application/json"},
-//         body:JSON.stringify(loc)
-//       }).then(()=>{
-//         navigate('/');
-//       })
-//   }
-
-//   return (
-//         <div className='container'>
-//             <div className="Auth-form-container">
-//               <form className="Auth-form">
-//                 <div className="Auth-form-content">
-//                   <h3 className="Auth-form-title">Sign In</h3>
-//                   <div className="form-group mt-3">
-//                     <label>Username</label>
-//                     <input
-//                       type="username"
-//                       className="form-control mt-1"
-//                       placeholder="Enter username"
-//                       value={username}
-//                       onChange={handleUsername}
-//                     />
-//                   </div>
-//                   <div className="form-group mt-3">
-//                     <label>Password</label>
-//                     <input
-//                       type="password"
-//                       className="form-control mt-1"
-//                       placeholder="Enter password"
-//                       value={password}
-//                       onChange={handlePassword}
-//                     />
-//                   </div>
-//                   <div className="d-grid gap-2 mt-3">
-//                     <input type="submit" value={"Log in"} onClick={handleLogin}/>
-//                   </div>
-//                 </div>
-//               </form>
-//             </div>
-//             </div>
-//           );
-// }
-
-// export default LoginComponent;
-
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import '../styles/TopNavBarComponent.css'
@@ -96,7 +26,6 @@ class LoginComponent extends Component {
             username:this.state.username,
             password:this.state.password
         }
-        console.log(cred)
         fetch("http://localhost:8080/login",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
@@ -104,7 +33,6 @@ class LoginComponent extends Component {
       }).then((response)=>
       response.json()
     ).then((user)=>{
-      console.log(user.status)
       if(user.status!==406){
         window.location.href='/'
       }
@@ -117,7 +45,7 @@ class LoginComponent extends Component {
         return (
           <div className='backImgLog'>
             <div className='d-flex flex-column text-center loginFormDiv'>
-              <div classname='loginText'><h2 className='text-white'>Login</h2></div>
+              <div className='loginText'><h2 className='text-white'>Login</h2></div>
               <div>
                 <form className='d-flex flex-column text-center' onSubmit={this.handleSubmit}>
                     <input

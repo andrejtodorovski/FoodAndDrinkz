@@ -4,12 +4,8 @@ import {
     ButtonGroup,
     Flex,
     HStack,
-    IconButton,
-    Input,
-    SkeletonText,
-    Text,
+    Input
   } from '@chakra-ui/react'
-  import { FaLocationArrow, FaTimes } from 'react-icons/fa'
   
   import {
     useJsApiLoader,
@@ -57,13 +53,12 @@ import {
             setOrigin(position.coords.latitude + " " + position.coords.longitude)
             setBoolean(false)
             setCenter({ lat: parseFloat(dr.split(" ")[0]), lng: parseFloat(dr.split(" ")[1]) })
-            if(routeFound==false){
+            if(routeFound===false){
               setMarkerPosition({ lat: parseFloat(dr.split(" ")[0]), lng: parseFloat(dr.split(" ")[1]) })
             }
             else{
               setMarkerPosition(null)
             }
-            // console.log(originUser)  
           },
           () => {
             
@@ -72,16 +67,11 @@ import {
       }
       });
     async function calculateRoute() {
-      // if (originRef.current.value === '' || destiantionRef.current.value === '') {
-      //   return
-      // }
+
       // eslint-disable-next-line no-undef
       const directionsService = new google.maps.DirectionsService()
-      console.log(dr)
       const results = await directionsService.route({
-        // origin: originRef.current.value,
-        // destination: destiantionRef.current.value,
-        // origin: originRef.current.value,
+
         
         origin: originUser,
         destination: dr,
@@ -99,7 +89,6 @@ import {
       setDistance('')
       setDuration('')
       originRef.current.value = ''
-      // destiantionRef.current.value = ''
     }
   
     return (

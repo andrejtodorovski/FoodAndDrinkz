@@ -24,7 +24,6 @@ class ListRestaurantsComponent extends Component {
             category: "Restaurant",
             attribute: event.target.value
         }
-        console.log(cred)
         fetch("http://localhost:8080/place/attributeAll",{
         method:"POST",
         headers:{"Content-Type":"application/json"},

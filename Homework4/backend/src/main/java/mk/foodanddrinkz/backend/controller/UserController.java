@@ -43,7 +43,10 @@ public class UserController {
     @GetMapping("/check")
     public Object hasUser(HttpServletRequest request){
         if(request.getServletContext().getAttribute("hasLoggedIn")!=null){
-            return ResponseEntity.ok("200");
+            if((boolean) request.getServletContext().getAttribute("hasLoggedIn"))
+                return ResponseEntity.ok("200");
+            else
+                return ResponseEntity.notFound();
         }
         else {
             return ResponseEntity.notFound();
@@ -53,14 +56,17 @@ public class UserController {
     @SneakyThrows
     @GetMapping("/getadmin")
     public String isUserAdmin(HttpServletRequest request){
-        if(request.getServletContext().getAttribute("hasLoggedIn")!=null){
-            User u = (User) request.getServletContext().getAttribute("user");
-            if(Objects.equals(u.getAuthority(), "ADMIN")){
-                return "admin";
+        if(request.getServletContext().getAttribute("hasLoggedIn")!=null) {
+            if ((boolean) request.getServletContext().getAttribute("hasLoggedIn")) {
+                User u = (User) request.getServletContext().getAttribute("user");
+                if (Objects.equals(u.getAuthority(), "ADMIN")) {
+                    return "admin";
+                } else {
+                    return "user";
+                }
             }
-            else {
-                return "user";
-            }
+            else
+                return "error";
         }
         else {
             return "error";

@@ -22,9 +22,6 @@ class StartPageComponent extends Component {
         const buttonStyle = {
             borderRadius: "20px"
         };
-        // const logoStyle = {
-        //     padding: "30px"
-        // };
         const logStyle = {
             padding: "5px"
         }
@@ -44,20 +41,20 @@ class StartPageComponent extends Component {
                 </div>
                 <div>
                     <div className='centered'>
-                        <button type="button" class="btn blueBut m-2" style={buttonStyle}>
-                            <img className='icon' src='https://cdn-icons-png.flaticon.com/512/38/38706.png'></img>
+                        <button type="button" className="btn blueBut m-2" style={buttonStyle}>
+                            <img className='icon' src='https://cdn-icons-png.flaticon.com/512/38/38706.png' alt=''></img>
                             <span style={logStyle}><Link to="/bars" className='text-white'>Bars</Link></span>
                         </button>
-                        <button type="button" class="btn orangeBut m-2" style={buttonStyle}>
-                            <img className='icon' src='https://cdn-icons-png.flaticon.com/512/5370/5370139.png'></img>
+                        <button type="button" className="btn orangeBut m-2" style={buttonStyle}>
+                            <img className='icon' src='https://cdn-icons-png.flaticon.com/512/5370/5370139.png' alt=''></img>
                             <span style={logStyle}><Link to="/restaurants" className='text-white'>Restaurants</Link></span>
                         </button>
-                        <button type="button" class="btn redBut m-2" style={buttonStyle}>
-                            <img className='icon' src='https://cdn-icons-png.flaticon.com/512/751/751621.png'></img>
+                        <button type="button" className="btn redBut m-2" style={buttonStyle}>
+                            <img className='icon' src='https://cdn-icons-png.flaticon.com/512/751/751621.png' alt=''></img>
                             <span style={logStyle}><Link to="/cafes" className='text-white'>Cafes</Link></span>
                         </button>
                         {this.state.isAdmin && 
-                            <><button type="button" class="btn topNavBarContainerDark borderRadiusBut m-2"><span><Link to="/place/add" className='text-white'>Add New Place</Link></span></button></>}
+                            <><button type="button" className="btn topNavBarContainerDark borderRadiusBut m-2"><span><Link to="/place/add" className='text-white'>Add New Place</Link></span></button></>}
                     </div>
                 </div>
             </div>

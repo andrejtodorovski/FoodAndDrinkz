@@ -1,13 +1,8 @@
-// /*global google*/
-import { Link } from 'react-router-dom'
 import Maps from '../Maps'
 import {
   useJsApiLoader,
-  GoogleMap,
-  Marker
 } from '@react-google-maps/api'
 import { useState, useEffect} from 'react'
-import { Wrapper, Status, Map } from "@googlemaps/react-wrapper";
 import PlaceService from '../services/PlaceService';
 import '../styles/TopNavBarComponent.css'
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlJ9QMrY5M7y1LHA3ZpyYNLmdfATPreSw&callback=initMap"></script>
@@ -31,9 +26,7 @@ function PlaceComponentWithRoute() {
         setPlace(res.data);
     });
     setData(true);
-        //  console.log(place)
     }
-    console.log(isFetched)
         if(isFetched===false){
             fetch("http://localhost:8080/user/check",{
             method:"GET",
@@ -41,10 +34,8 @@ function PlaceComponentWithRoute() {
         }).then((response)=>
         response.json()
         ).then((user)=>{
-        console.log(user.status)
         if(user.status!==406){
             setLogged(false)
-            
         }
         else{
             setLogged(true)
@@ -60,8 +51,6 @@ function PlaceComponentWithRoute() {
 const addFavorites=(e)=>{
     e.preventDefault()
     let id = window.location.pathname.substring(1);
-    console.log(id)
-    console.log("tuka sum")
     PlaceService.addPlaceToFavorites(window.location.pathname.substring(1)).then(
         alert("Succesfully added to favorites")
     );
@@ -73,7 +62,7 @@ const addFavorites=(e)=>{
                 <div className='width50 ml-5 mb-3'>
                     <h1 className='mt-3'>{place.name}</h1>
                     <div className='d-flex'>
-                        <div><img className='icon mr-2' src='https://cdn-icons-png.flaticon.com/512/1828/1828961.png'></img></div>
+                        <div><img className='icon mr-2' src='https://cdn-icons-png.flaticon.com/512/1828/1828961.png' alt=''></img></div>
                         <div><h5 className='textDarkGray'>{place.rating}</h5></div>
                     </div>
                     <div className='d-flex justify-content-between flex-column'>

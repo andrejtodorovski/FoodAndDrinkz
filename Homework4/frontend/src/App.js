@@ -3,7 +3,6 @@ import {Routes, Route, BrowserRouter as Router} from 'react-router-dom'
 import TopNavBarComponent from './components/TopNavBarComponent'
 import StartPageComponent from './components/StartPageComponent'
 import MostVisitedAndTopRatedComponent from './components/MostVisitedAndTopRatedComponent'
-import LoggedTopNavBarComponent from './components/LoggedTopNavBarComponent'
 import BarsNavBarComponent from './components/NavBarComponentBars'
 import CafesNavBarComponent from './components/NavBarComponentCafes'
 import RestaurantsNavBarComponent from './components/NavBarComponentRestaurants'
@@ -15,7 +14,6 @@ import RegisterComponent from './components/RegisterComponent'
 import AddPlaceComponent from './components/AddPlaceComponent';
 import ShowClosestComponent from './components/ShowClosestComponent';
 import FindUserLocationComponent from './components/FindUserLocationComponent';
-import PlaceComponent from './components/PlaceComponent';
 import PlaceComponentWithRoute from './components/PlaceComponentWithRoute';
 import TopNavBarComponentDark from './components/TopNavBarComponentDark';
 import ListFavoritePlacesComponent from './components/ListFavoritePlacesComponent'

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom'
 import '../styles/TopNavBarComponent.css'
 import { useState, useEffect} from 'react'
@@ -7,7 +7,6 @@ function TopNavBarDarkComponent() {
     const [isLogged, setLogged] = useState()
     const [isFetched, setFetched] = useState(false)
     useEffect(() => {
-        console.log(isFetched)
         if(isFetched===false){
             fetch("http://localhost:8080/user/check",{
             method:"GET",
@@ -15,10 +14,8 @@ function TopNavBarDarkComponent() {
         }).then((response)=>
         response.json()
         ).then((user)=>{
-        console.log(user.status)
         if(user.status!==406){
             setLogged(false)
-            
         }
         else{
             setLogged(true)
@@ -28,7 +25,6 @@ function TopNavBarDarkComponent() {
     });
     const handleLogout=(e)=>{
         e.preventDefault()
-        console.log("Clicked button for logout")
         fetch("http://localhost:8080/user/logout",{
             method:"GET",
             headers:{"Content-Type":"application/json"},

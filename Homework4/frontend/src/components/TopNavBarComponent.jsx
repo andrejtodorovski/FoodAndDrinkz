@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom'
 import '../styles/TopNavBarComponent.css'
 import { useState, useEffect} from 'react'
@@ -6,12 +6,7 @@ import { useState, useEffect} from 'react'
 function TopNavBarComponent() {
     const [isLogged, setLogged] = useState()
     const [isFetched, setFetched] = useState(false)
-    const [levo, setLevo] = useState("")
-    const [desno, setDesno] = useState("")
-    const [levoLink, setLevoLink] = useState("")
-    const [desnoLink, setDesnoLink] = useState("")
     useEffect(() => {
-        console.log(isFetched)
         if(isFetched===false){
             fetch("http://localhost:8080/user/check",{
             method:"GET",
@@ -19,7 +14,6 @@ function TopNavBarComponent() {
         }).then((response)=>
         response.json()
         ).then((user)=>{
-        console.log(user.status)
         if(user.status!==406){
             setLogged(false)
             
@@ -32,7 +26,6 @@ function TopNavBarComponent() {
     });
     const handleLogout=(e)=>{
         e.preventDefault()
-        console.log("Clicked button for logout")
         fetch("http://localhost:8080/user/logout",{
             method:"GET",
             headers:{"Content-Type":"application/json"},
