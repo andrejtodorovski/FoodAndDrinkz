@@ -55,8 +55,8 @@ public class PlaceServiceImplementation implements PlaceService {
     }
 
     @Override
-    public Place save(Place place) {
-        return placeRepository.save(place);
+    public void save(Place place) {
+        placeRepository.save(place);
     }
     public static float distance(double lat1, double lat2, double lon1, double lon2){
         lon1 = Math.toRadians(lon1);
@@ -93,11 +93,6 @@ public class PlaceServiceImplementation implements PlaceService {
             stringHashSet.addAll(Arrays.asList(pl.getAttributes()));
         }
         return new ArrayList<>(stringHashSet);
-    }
-
-    @Override
-    public List<Place> getByAttributeAndCategory(String attribute, String category) {
-        return placeRepository.findAllByCategoryIgnoreCaseAndAttributesContainingIgnoreCase(category,attribute);
     }
 
     @Override

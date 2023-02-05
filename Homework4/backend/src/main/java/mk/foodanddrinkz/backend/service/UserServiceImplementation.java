@@ -31,11 +31,6 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public User findByUsername(String username) throws UserDoesntExistException {
-        return userRepository.findByUsername(username).orElseThrow(UserDoesntExistException::new);
-    }
-
-    @Override
     public void register(String username, String password, String firstName, String lastName, String email) {
         userRepository.save(new User(username, password, firstName, lastName, email, "USER"));
     }

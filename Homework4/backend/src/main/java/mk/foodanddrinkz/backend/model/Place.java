@@ -57,17 +57,6 @@ public class Place {
     }
 
 
-    public String[] getWorkingHours(){
-        String [] opened = new String[7];
-        opened[0] = monday;
-        opened[1] = tuesday;
-        opened[2] = wednesday;
-        opened[3] = thursday;
-        opened[4] = friday;
-        opened[5] = saturday;
-        opened[6] = sunday;
-        return opened;
-    }
     public String[] getAttributes(){
         return attributes.split(";");
     }
