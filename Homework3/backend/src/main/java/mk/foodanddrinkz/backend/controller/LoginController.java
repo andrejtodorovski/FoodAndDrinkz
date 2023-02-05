@@ -9,7 +9,6 @@ import mk.foodanddrinkz.backend.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-//Copied from webLab
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/login")
