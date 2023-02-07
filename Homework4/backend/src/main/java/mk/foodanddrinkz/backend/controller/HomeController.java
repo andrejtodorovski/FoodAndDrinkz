@@ -12,13 +12,11 @@ import java.util.List;
 @RequestMapping("/home")
 @CrossOrigin(origins = "http://localhost:3000")
 public class HomeController {
-
     // Returning the top-rated places using microservice1
     @GetMapping("/topRated")
     public ResponseEntity<Place[]> getTopRatedAndMostVisited() {
         return new RestTemplate().getForEntity("http://localhost:8099/topRated", Place[].class);
     }
-
     // Returning the most-visited places using microservice1
     @GetMapping("/mostVisited")
     public ResponseEntity<Place[]> getMostVisited() {
