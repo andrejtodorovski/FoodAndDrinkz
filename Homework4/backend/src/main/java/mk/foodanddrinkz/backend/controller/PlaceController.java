@@ -8,8 +8,11 @@ import mk.foodanddrinkz.backend.model.Place;
 import mk.foodanddrinkz.backend.service.PlaceService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -22,32 +25,28 @@ public class PlaceController {
     public PlaceController(PlaceService placeService) {
         this.placeService = placeService;
     }
-    // Returning list of all Bars
+    // Returning list of all Bars using microservice1
     @GetMapping("/bars")
-    public List<Place> getBars() {
-        return placeService.getBars();
+    public ResponseEntity<Place[]> getBars() {
+        return new RestTemplate().getForEntity("http://localhost:8099/bars", Place[].class);
     }
-    // Returning list of all Restaurants
+    // Returning list of all Restaurants using microservice1
     @GetMapping("/restaurants")
-    public List<Place> getRestaurants() {
-        return placeService.getRestaurants();
+    public ResponseEntity<Place[]> getRestaurants() {
+        return new RestTemplate().getForEntity("http://localhost:8099/restaurants", Place[].class);
     }
-    // Returning list of all Cafes
+    // Returning list of all Cafes using microservice1
     @GetMapping("/cafes")
-    public List<Place> getCafes() {
-        return placeService.getCafes();
+    public ResponseEntity<Place[]> getCafes() {
+        return new RestTemplate().getForEntity("http://localhost:8099/cafes", Place[].class);
     }
 
-    // Returning a place based on his id, if the place exists
+    // Returning a place based on his id, if the place exists, using microservice1
     @GetMapping("/{id}")
     public ResponseEntity<Place> getPlaceById(@PathVariable Long id) {
-        Place place;
-        try {
-            place = placeService.getById(id);
-        } catch (PlaceDoesntExistException e) {
-            throw new RuntimeException(e);
-        }
-        return ResponseEntity.ok(place);
+        Map<String, Long>  uriVariables=new HashMap<>();
+        uriVariables.put("id", id);
+        return new RestTemplate().getForEntity("http://localhost:8099/{id}", Place.class, uriVariables);
     }
     // Add a new place
     @PostMapping("/new/add")
@@ -83,6 +82,7 @@ public class PlaceController {
         String category = (String) request.getServletContext().getAttribute("category");
         return placeService.findClosest(longitude, latitude, radius, category);
     }
+    // the following functions are implemented using microservice2
     // Bars attributes
     @GetMapping("/category/bar")
     public String[] returnAttributesForBar() {
@@ -108,7 +108,7 @@ public class PlaceController {
         if (categoryDTO.getAttribute().equals("default")) {
             return placeService.findClosest(longitude, latitude, radius, category);
         }
-        return placeService.findClosest(longitude, latitude, radius, category).stream().filter(p -> p.getA().contains(categoryDTO.getAttribute())).collect(Collectors.toList());
+        return placeService.findClosest(longitude, latitude, radius, category).stream().filter(p -> p.getAttributes().contains(categoryDTO.getAttribute())).collect(Collectors.toList());
     }
     // Find all by attribute
     @PostMapping("/attributeAll")
@@ -116,6 +116,6 @@ public class PlaceController {
         if (categoryDTO.getAttribute().equals("default")) {
             return placeService.findByCategory(categoryDTO.getCategory());
         }
-        return placeService.findByCategory(categoryDTO.getCategory()).stream().filter(p -> p.getA().contains(categoryDTO.getAttribute())).collect(Collectors.toList());
+        return placeService.findByCategory(categoryDTO.getCategory()).stream().filter(p -> p.getAttributes().contains(categoryDTO.getAttribute())).collect(Collectors.toList());
     }
 }

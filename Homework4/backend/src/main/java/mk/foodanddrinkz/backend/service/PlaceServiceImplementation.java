@@ -90,7 +90,7 @@ public class PlaceServiceImplementation implements PlaceService {
         HashSet<String> stringHashSet = new HashSet<>();
         for (Place pl: placeRepository.findAllByCategoryIgnoreCase(category)
              ) {
-            stringHashSet.addAll(Arrays.asList(pl.getAttributes()));
+            stringHashSet.addAll(Arrays.asList(pl.getA()));
         }
         return new ArrayList<>(stringHashSet);
     }

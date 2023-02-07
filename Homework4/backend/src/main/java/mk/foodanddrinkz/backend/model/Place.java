@@ -57,11 +57,8 @@ public class Place {
     }
 
 
-    public String[] getAttributes(){
+    public String[] getA(){
         return attributes.split(";");
-    }
-    public String getA(){
-        return attributes;
     }
     @Override
     public boolean equals(Object o) {
