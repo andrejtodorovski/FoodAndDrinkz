@@ -50,7 +50,7 @@ public class PlaceController {
     public List<Place> getRestaurants() {
         return placeService.getRestaurants();
     }
-    // Returning list of all Cafes
+    // Returning list of all Cafés
     @GetMapping("/cafes")
     public List<Place> getCafes() {
         return placeService.getCafes();

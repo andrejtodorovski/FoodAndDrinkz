@@ -1,13 +1,10 @@
 package mk.foodanddrinkz.backend.controller;
 
 import mk.foodanddrinkz.backend.model.Place;
-import mk.foodanddrinkz.backend.service.PlaceService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
-
+// implemented using microservice3
 @RestController
 @RequestMapping("/home")
 @CrossOrigin(origins = "http://localhost:3000")

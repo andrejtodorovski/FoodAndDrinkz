@@ -1,10 +1,8 @@
 package mk.foodanddrinkz.backend.controller;
 
-import jakarta.servlet.http.HttpServletRequest;
 import mk.foodanddrinkz.backend.dto.CategoryDTO;
 import mk.foodanddrinkz.backend.dto.SearchDTO;
 import mk.foodanddrinkz.backend.model.Place;
-import mk.foodanddrinkz.backend.service.PlaceService;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -30,7 +28,7 @@ public class PlaceController {
     public ResponseEntity<Place[]> getRestaurants() {
         return new RestTemplate().getForEntity("http://localhost:8099/restaurants", Place[].class);
     }
-    // Returning list of all Cafes using microservice1
+    // Returning list of all Cafés using microservice1
     @GetMapping("/cafes")
     public ResponseEntity<Place[]> getCafes() {
         return new RestTemplate().getForEntity("http://localhost:8099/cafes", Place[].class);

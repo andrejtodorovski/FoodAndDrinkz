@@ -14,12 +14,11 @@ function TopNavBarComponent() {
         }).then((response)=>
         response.json()
         ).then((user)=>{
-        if(user.status!==406){
-            setLogged(false)
-            
-        }
-        else{
+        if(user===500){
             setLogged(true)
+        }
+        if(user===200){
+            setLogged(false)
         }
         })
         }

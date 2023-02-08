@@ -24,36 +24,6 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
-    public List<Place> getTopRated() {
-        return placeRepository.findAllByOrderByRatingDesc().subList(0,8);
-    }
-
-    @Override
-    public List<Place> getMostVisited() {
-        return placeRepository.findAllByOrderByReviewCountDesc().subList(0,8);
-    }
-
-    @Override
-    public List<Place> getBars() {
-        return placeRepository.findAllByCategoryIgnoreCase("bar");
-    }
-
-    @Override
-    public List<Place> getRestaurants() {
-        return placeRepository.findAllByCategoryIgnoreCase("restaurant");
-    }
-
-    @Override
-    public List<Place> getCafes() {
-        return placeRepository.findAllByCategoryIgnoreCase("cafe");
-    }
-
-    @Override
-    public Place getById(Long id)  {
-        return placeRepository.findById(id).stream().findFirst().orElseThrow(RuntimeException::new);
-    }
-
-    @Override
     public void save(Place place) {
         placeRepository.save(place);
     }
