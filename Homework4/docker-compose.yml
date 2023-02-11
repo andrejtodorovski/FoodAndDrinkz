@@ -1,0 +1,53 @@
+version: '2.4'
+services:
+    backend:
+        container_name: backend
+        build:
+            context: backend
+            dockerfile: Dockerfile
+        platform: linux/amd64
+        image: dann132/backend:latest
+        ports:
+            - 80:8080
+        restart: always
+        networks:
+            - my-network
+    microservice1:
+        container_name: microservice1
+        build:
+            context: microservice1
+            dockerfile: Dockerfile
+        platform: linux/amd64
+        image: dann132/microservice1:latest
+        ports:
+            - 8099:8099
+        restart: always
+        networks:
+            - my-network
+    microservice2:
+        container_name: microservice2
+        build:
+            context: microservice2
+            dockerfile: Dockerfile
+        platform: linux/amd64
+        image: dann132/microservice2:latest
+        ports:
+            - 8098:8098
+        restart: always
+        networks:
+            - my-network
+    microservice3:
+        container_name: microservice3
+        build:
+            context: microservice3
+            dockerfile: Dockerfile
+        platform: linux/amd64
+        image: dann132/microservice3:latest
+        ports:
+            - 8097:8097
+        restart: always
+        networks:
+            - my-network
+networks:
+    my-network:
+        driver: bridge
