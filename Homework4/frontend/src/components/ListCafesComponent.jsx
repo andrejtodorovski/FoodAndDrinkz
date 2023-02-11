@@ -25,7 +25,7 @@ class ListCafesComponent extends Component {
                 attribute: event.target.value
             }
             console.log(cred)
-            fetch("http://localhost:8080/place/attributeAll",{
+            fetch("https://bekend.azurewebsites.net/place/attributeAll",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(cred) 

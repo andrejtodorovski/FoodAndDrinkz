@@ -49,7 +49,7 @@ class RegisterComponent extends Component {
           email:this.state.email
       }
       if(this.state.password===this.state.rpassword){
-      fetch("http://localhost:8080/login/register",{
+      fetch("https://bekend.azurewebsites.net/login/register",{
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(cred) 

@@ -24,7 +24,7 @@ class ListRestaurantsComponent extends Component {
             category: "Restaurant",
             attribute: event.target.value
         }
-        fetch("http://localhost:8080/place/attributeAll",{
+        fetch("https://bekend.azurewebsites.net/place/attributeAll",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify(cred) 

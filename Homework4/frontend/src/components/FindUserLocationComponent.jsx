@@ -56,7 +56,7 @@
     const findClosest=(e)=>{
         e.preventDefault()
         const loc = {longitude,latitude,radius,category}
-        fetch("http://localhost:8080/place/closest",{
+        fetch("https://bekend.azurewebsites.net/place/closest",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(loc)

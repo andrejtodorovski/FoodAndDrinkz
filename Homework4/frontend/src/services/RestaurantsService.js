@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const RESTAURANTS_API_BASE_URL = "http://localhost:8080/place/restaurants"
+const RESTAURANTS_API_BASE_URL = "https://bekend.azurewebsites.net/place/restaurants"
 
 
 class RestaurantsService {

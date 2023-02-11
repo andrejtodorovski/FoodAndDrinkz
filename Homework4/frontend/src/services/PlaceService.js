@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const PLACE_API_BASE_URL = "http://localhost:8080/place/"
-const ADD_PLACE_API_BASE_URL = "http://localhost:8080/place/new/add"
-const GET_CLOSEST_PLACES_BASE_URL = "http://localhost:8080/place/closest"
-const ADD_TO_FAVORITES_API_BASE_URL = "http://localhost:8080/user/"
+const PLACE_API_BASE_URL = "https://bekend.azurewebsites.net/place/"
+const ADD_PLACE_API_BASE_URL = "https://bekend.azurewebsites.net/place/new/add"
+const GET_CLOSEST_PLACES_BASE_URL = "https://bekend.azurewebsites.net/place/closest"
+const ADD_TO_FAVORITES_API_BASE_URL = "https://bekend.azurewebsites.net/user/"
 
 class PlaceService {
     getPlace(ID){

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const FAVORITES_API_BASE_URL = "http://localhost:8080/user/favorites"
+const FAVORITES_API_BASE_URL = "https://bekend.azurewebsites.net/user/favorites"
 
 
 class FavoritesService {

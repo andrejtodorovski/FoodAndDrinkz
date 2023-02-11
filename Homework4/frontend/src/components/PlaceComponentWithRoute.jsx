@@ -28,7 +28,7 @@ function PlaceComponentWithRoute() {
     setData(true);
     }
         if(isFetched===false){
-            fetch("http://localhost:8080/user/check",{
+            fetch("https://bekend.azurewebsites.net/user/check",{
             method:"GET",
             headers:{"Content-Type":"application/json"},
         }).then((response)=>

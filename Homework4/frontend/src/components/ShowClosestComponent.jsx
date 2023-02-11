@@ -41,7 +41,7 @@ class ShowClosestComponent extends Component {
             category: this.state.cat,
             attribute: event.target.value
         }
-        fetch("http://localhost:8080/place/attribute",{
+        fetch("https://bekend.azurewebsites.net/place/attribute",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify(cred) 

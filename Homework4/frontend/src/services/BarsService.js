@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BARS_API_BASE_URL = "http://localhost:8080/place/bars"
+const BARS_API_BASE_URL = "https://bekend.azurewebsites.net/place/bars"
 
 
 class BarsService {

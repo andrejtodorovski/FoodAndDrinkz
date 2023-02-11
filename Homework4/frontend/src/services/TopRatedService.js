@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const TOP_RATED_API_BASE_URL = "http://localhost:8080/home/topRated"
+const TOP_RATED_API_BASE_URL = "https://bekend.azurewebsites.net/home/topRated"
 
 
 class TopRatedService {

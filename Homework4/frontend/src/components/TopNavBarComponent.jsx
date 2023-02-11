@@ -8,7 +8,7 @@ function TopNavBarComponent() {
     const [isFetched, setFetched] = useState(false)
     useEffect(() => {
         if(isFetched===false){
-            fetch("http://localhost:8080/user/check",{
+            fetch("https://bekend.azurewebsites.net/user/check",{
             method:"GET",
             headers:{"Content-Type":"application/json"},
         }).then((response)=>
@@ -25,7 +25,7 @@ function TopNavBarComponent() {
     });
     const handleLogout=(e)=>{
         e.preventDefault()
-        fetch("http://localhost:8080/user/logout",{
+        fetch("https://bekend.azurewebsites.net/user/logout",{
             method:"GET",
             headers:{"Content-Type":"application/json"},
         }).then(

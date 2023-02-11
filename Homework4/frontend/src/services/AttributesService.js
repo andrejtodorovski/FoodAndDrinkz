@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const ATTRIBUTESBAR_API_BASE_URL = "http://localhost:8080/place/category/bar"
-const ATTRIBUTESCAFE_API_BASE_URL = "http://localhost:8080/place/category/cafe"
-const ATTRIBUTESRESTAURANT_API_BASE_URL = "http://localhost:8080/place/category/restaurant"
+const ATTRIBUTESBAR_API_BASE_URL = "https://bekend.azurewebsites.net/place/category/bar"
+const ATTRIBUTESCAFE_API_BASE_URL = "https://bekend.azurewebsites.net/place/category/cafe"
+const ATTRIBUTESRESTAURANT_API_BASE_URL = "https://bekend.azurewebsites.net/place/category/restaurant"
 
 
 class AttributessService {
