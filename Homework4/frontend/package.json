@@ -1,9 +1,6 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "homepage": "https://github.com/andrejtodorovski/FoodAndDrinkz",
-  "predeploy" : "npm run build",
-  "deploy" : "gh-pages -d build",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^2.4.3",
