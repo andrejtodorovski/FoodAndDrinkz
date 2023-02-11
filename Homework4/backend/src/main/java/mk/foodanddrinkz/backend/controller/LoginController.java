@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin()
 @RequestMapping("/login")
 public class LoginController {
     // Login user
@@ -21,7 +21,7 @@ public class LoginController {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<LoginDTO> request =
                 new HttpEntity<>(loginDTO, headers);
-        return restTemplate.postForObject("http://localhost:8097/login", request, Object.class);
+        return restTemplate.postForObject("http://microservice3:8097/login", request, Object.class);
     }
     // Register user
     @PostMapping("/register")
@@ -31,6 +31,6 @@ public class LoginController {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<RegisterDTO> request =
                 new HttpEntity<>(registerDTO, headers);
-        restTemplate.postForObject("http://localhost:8097/register", request, String.class);
+        restTemplate.postForObject("http://microservice3:8097/register", request, String.class);
     }
 }

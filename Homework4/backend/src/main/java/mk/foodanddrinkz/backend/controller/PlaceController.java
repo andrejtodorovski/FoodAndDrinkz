@@ -14,31 +14,31 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin()
 @RestController
 @RequestMapping("/place")
 public class PlaceController {
     // Returning list of all Bars using microservice1
     @GetMapping("/bars")
     public ResponseEntity<Place[]> getBars() {
-        return new RestTemplate().getForEntity("http://localhost:8099/bars", Place[].class);
+        return new RestTemplate().getForEntity("http://microservice1:8099/bars", Place[].class);
     }
     // Returning list of all Restaurants using microservice1
     @GetMapping("/restaurants")
     public ResponseEntity<Place[]> getRestaurants() {
-        return new RestTemplate().getForEntity("http://localhost:8099/restaurants", Place[].class);
+        return new RestTemplate().getForEntity("http://microservice1:8099/restaurants", Place[].class);
     }
     // Returning list of all Cafés using microservice1
     @GetMapping("/cafes")
     public ResponseEntity<Place[]> getCafes() {
-        return new RestTemplate().getForEntity("http://localhost:8099/cafes", Place[].class);
+        return new RestTemplate().getForEntity("http://microservice1:8099/cafes", Place[].class);
     }
     // Returning a place based on his id, if the place exists, using microservice1
     @GetMapping("/{id}")
     public ResponseEntity<Place> getPlaceById(@PathVariable Long id) {
         Map<String, Long>  uriVariables=new HashMap<>();
         uriVariables.put("id", id);
-        return new RestTemplate().getForEntity("http://localhost:8099/{id}", Place.class, uriVariables);
+        return new RestTemplate().getForEntity("http://microservice1:8099/{id}", Place.class, uriVariables);
     }
     // the following functions are implemented using microservice2
     // Add a new place
@@ -49,7 +49,7 @@ public class PlaceController {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Place> request =
                 new HttpEntity<>(place, headers);
-        restTemplate.postForObject("http://localhost:8098/new/add", request, String.class);
+        restTemplate.postForObject("http://microservice2:8098/new/add", request, String.class);
 
     }
     // Search the closest places in radius
@@ -64,27 +64,27 @@ public class PlaceController {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<SearchDTO> request =
                 new HttpEntity<>(searchDTO, headers);
-        restTemplate.postForObject("http://localhost:8098/closest", request, String.class);
+        restTemplate.postForObject("http://microservice2:8098/closest", request, String.class);
     }
     //  Get user location
     @GetMapping("/closest")
     public ResponseEntity<Place[]> getClosestPlaces() {
-        return new RestTemplate().getForEntity("http://localhost:8098/closest", Place[].class);
+        return new RestTemplate().getForEntity("http://microservice2:8098/closest", Place[].class);
     }
     // Bars attributes
     @GetMapping("/category/bar")
     public ResponseEntity<String[]> returnAttributesForBar() {
-        return new RestTemplate().getForEntity("http://localhost:8098/category/bar", String[].class);
+        return new RestTemplate().getForEntity("http://microservice2:8098/category/bar", String[].class);
     }
     // Cafes attributes
     @GetMapping("/category/cafe")
     public ResponseEntity<String[]> returnAttributesForCafe() {
-        return new RestTemplate().getForEntity("http://localhost:8098/category/cafe", String[].class);
+        return new RestTemplate().getForEntity("http://microservice2:8098/category/cafe", String[].class);
     }
     // Restaurants attributes
     @GetMapping("/category/restaurant")
     public ResponseEntity<String[]> returnAttributesForRestaurant() {
-        return new RestTemplate().getForEntity("http://localhost:8098/category/restaurant", String[].class);
+        return new RestTemplate().getForEntity("http://microservice2:8098/category/restaurant", String[].class);
     }
     // Find the closest places by attribute
     @PostMapping("/attribute")
@@ -94,7 +94,7 @@ public class PlaceController {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<CategoryDTO> request =
                 new HttpEntity<>(categoryDTO, headers);
-        return restTemplate.postForObject("http://localhost:8098/attribute", request, Place[].class);
+        return restTemplate.postForObject("http://microservice2:8098/attribute", request, Place[].class);
     }
     // Find all by attribute
     @PostMapping("/attributeAll")
@@ -104,6 +104,6 @@ public class PlaceController {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<CategoryDTO> request =
                 new HttpEntity<>(categoryDTO, headers);
-        return restTemplate.postForObject("http://localhost:8098/attributeAll", request, Place[].class);
+        return restTemplate.postForObject("http://microservice2:8098/attributeAll", request, Place[].class);
     }
 }

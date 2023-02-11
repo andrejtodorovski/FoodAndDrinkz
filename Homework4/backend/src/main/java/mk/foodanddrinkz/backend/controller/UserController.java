@@ -12,35 +12,35 @@ import java.util.Map;
 // implemented using microservice3
 @RestController
 @RequestMapping("/user")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin()
 public class UserController {
     // Returning the information about a user, if the user exists
     @GetMapping("/profile")
     public ResponseEntity<RegisterDTO[]> getUserInfo() {
-        return new RestTemplate().getForEntity("http://localhost:8097/profile", RegisterDTO[].class);
+        return new RestTemplate().getForEntity("http://microservice3:8097/profile", RegisterDTO[].class);
     }
     // Returning whether the user is logged in or not
     @SneakyThrows
     @GetMapping("/check")
     public Object hasUser(){
-        return new RestTemplate().getForEntity("http://localhost:8097/check", Object.class);
+        return new RestTemplate().getForEntity("http://microservice3:8097/check", Object.class);
     }
     // Returning the role of the user
     @SneakyThrows
     @GetMapping("/getadmin")
     public ResponseEntity<String> isUserAdmin(){
-        return new RestTemplate().getForEntity("http://localhost:8097/getadmin", String.class);
+        return new RestTemplate().getForEntity("http://microservice3:8097/getadmin", String.class);
 
     }
     // Returning the favorite places for a user, if the user exists
     @GetMapping("/favorites")
     public ResponseEntity<Place[]> getFavorites() {
-        return new RestTemplate().getForEntity("http://localhost:8097/favorites", Place[].class);
+        return new RestTemplate().getForEntity("http://microservice3:8097/favorites", Place[].class);
     }
     // Log out method
     @GetMapping("/logout")
     public void getLogout(){
-        new RestTemplate().getForEntity("http://localhost:8097/logout",String.class);
+        new RestTemplate().getForEntity("http://microservice3:8097/logout",String.class);
     }
     // Add place to favorites
     @SneakyThrows
@@ -48,6 +48,6 @@ public class UserController {
     public ResponseEntity<String> addToFavorites(@PathVariable Long id) {
         Map<String, Long> uriVariables=new HashMap<>();
         uriVariables.put("id", id);
-        return new RestTemplate().getForEntity("http://localhost:8097/{id}",String.class,uriVariables);
+        return new RestTemplate().getForEntity("http://microservice3:8097/{id}",String.class,uriVariables);
     }
 }
